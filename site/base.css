@@ -81,3 +81,10 @@ footer p{max-width:var(--text)}
 .design-list a{font-size:1.15rem}
 @media (max-width:45.99rem){.hero-text{order:-1}.hero{gap:1.5rem}}
 @media (max-width:30rem){.switcher .idea{display:none}.switcher ul{flex-wrap:nowrap;overflow-x:auto}.switcher li a{white-space:nowrap}}
+/* Family bar (seed/shared/family-bar.html), explicit colours and 24px targets as in pipeline-demo; .family{ marker kept for build/family-bar.mjs. */
+.family{font-size:.875rem;border-bottom:1px solid var(--line);background:var(--note)}
+.family ul{list-style:none;margin:0 auto;padding:.1rem 16px;display:flex;flex-wrap:wrap;gap:0 1rem;max-width:var(--max)}
+.family a{color:var(--muted);text-decoration:none;display:inline-block;padding:.2rem 0;min-height:24px}
+.family a:hover,.family a:focus-visible{color:var(--fg);text-decoration:underline}
+.family .family-sep{margin-left:auto}
+@media (max-width:40rem){.family .family-sep{margin-left:0}}

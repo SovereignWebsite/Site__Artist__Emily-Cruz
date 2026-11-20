@@ -72,11 +72,17 @@ DESIGNS = {
 }
 
 
-def img(name, alt, pre, lazy=True, cls=""):
+GALLERY_SIZES = "(min-width: 68rem) 33rem, (min-width: 30rem) 50vw, 100vw"
+HERO_SIZES = "(min-width: 46rem) 30rem, 100vw"
+
+
+def img(name, alt, pre, lazy=True, cls="", sizes=GALLERY_SIZES):
     w, h = SIZES[name]
-    lz = ' loading="lazy"' if lazy else ""
+    lz = ' loading="lazy" decoding="async"' if lazy else ' fetchpriority="high"'
     c = f' class="{cls}"' if cls else ""
-    return (f'<a href="{pre}images/{name}-1400.webp"{c}><img src="{pre}images/{name}-720.webp" '
+    src = f"{pre}images/{name}"
+    return (f'<a href="{src}-1400.webp"{c}><img src="{src}-720.webp" '
+            f'srcset="{src}-400.webp 400w, {src}-720.webp 720w" sizes="{sizes}" '
             f'alt="{html.escape(alt)}" width="{w}" height="{h}"{lz}></a>')
 
 
@@ -87,7 +93,7 @@ def fig(item, pre, lazy=True):
 
 def hero(pre):
     return f'''<section class="hero" id="top">
-  <figure class="hero-photo">{img("headshot", "Emily Cruz, head and shoulders, against a sage green wall", pre, lazy=False)}<figcaption>Photo © YellowBellyPhoto</figcaption></figure>
+  <figure class="hero-photo">{img("headshot", "Emily Cruz, head and shoulders, against a sage green wall", pre, lazy=False, sizes=HERO_SIZES)}<figcaption>Photo © YellowBellyPhoto</figcaption></figure>
   <div class="hero-text">
     <p class="eyebrow">Actor-musician and artist</p>
     <h1>Emily Cruz</h1>
@@ -120,8 +126,8 @@ def reels():
 </section>'''
 
 
-def gallery(pre, first=False):
-    photos = "".join(fig(p, pre, lazy=not (first and i < 2)) for i, p in enumerate(PHOTOS))
+def gallery(pre):
+    photos = "".join(fig(p, pre) for p in PHOTOS)
     stills = "".join(fig(s, pre) for s in STILLS)
     return f'''<section id="gallery" aria-labelledby="gallery-h">
   <h2 id="gallery-h">Gallery</h2>
@@ -182,8 +188,23 @@ ORDER = {  # section order per design: the idea, not only the colour
 NAV = [("reels", "Showreels"), ("gallery", "Gallery"), ("credits", "Credits"), ("skills", "Skills"), ("contact", "Contact")]
 
 
+FAMILY = """<nav class="family" aria-label="The Sovereign Website family">
+  <ul>
+    <li><a href="https://sovereignwebsite.ai/">Sovereign Website</a></li>
+    <li><a href="https://sovereignwebsite.org/">Principles</a></li>
+    <li><a href="https://sovereignwebsite.site/">Hosted</a></li>
+    <li><a href="https://hub.sovereignweb.site/">Hub</a></li>
+    <li><a href="https://agents.sovereignweb.site/">Agents</a></li>
+    <li><a href="https://vault.sovereignwebsite.site/">Vault</a></li>
+    <li class="family-sep"><a href="https://agenticcells.ai/">AgentiCCells</a></li>
+    <li><a href="https://riskmandate.ai/">RiskMandate</a></li>
+    <li><a href="https://newsroom.sgit.ai/">Newsroom</a></li>
+  </ul>
+</nav>"""  # from SovereignWebsite__Factory seed/shared/family-bar.html
+
+
 def page(n, pre, switcher):
-    parts = {"hero": lambda: hero(pre), "reels": reels, "gallery": lambda: gallery(pre, first=n == 4),
+    parts = {"hero": lambda: hero(pre), "reels": reels, "gallery": lambda: gallery(pre),
              "credits": credits, "skills": skills, "contact": contact}
     body = "\n".join(parts[s]() for s in ORDER[n])
     nav = "".join(f'<a href="#{i}">{t}</a>' for i, t in NAV)
@@ -214,6 +235,7 @@ def page(n, pre, switcher):
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+{FAMILY}
 {sw}
 <header class="bar">
   <a class="brand" href="#top">Emily Cruz</a>
