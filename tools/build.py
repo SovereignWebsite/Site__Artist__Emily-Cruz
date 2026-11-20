@@ -452,7 +452,7 @@ def footer(pre):
 
 
 def header_links(pre):
-    return f'<p class="head-links"><a href="{pre}start/">Start here</a> <a href="{pre}agents/">Use with your AI</a></p>'
+    return f'<p class="head-links"><a href="{pre}start/">Start here</a> <a href="{pre}agents/">Use with your AI</a> <a href="{pre}admin/">How it was made</a></p>'
 
 
 REPO = "https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz"

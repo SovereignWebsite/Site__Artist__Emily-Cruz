@@ -189,3 +189,7 @@ main:focus{outline:none}
 .steps h2{font-size:1.25rem;margin:.2rem 0 .3rem}
 .asks li{font-family:var(--serif);font-size:1.1rem;margin-bottom:.5rem}
 .plain .bar nav a{color:var(--chooser-fg,var(--fg))}
+/* long URLs and repository names wrap instead of widening the page (design.b) */
+a:any-link,code{overflow-wrap:anywhere}
+.doc p,.doc li,footer p{overflow-wrap:anywhere}
+pre{overflow-x:auto;max-width:100%}
