@@ -68,7 +68,7 @@ SKILLS = [
 FACTS = [("Playing age", "15 to 25"), ("Height", "5 ft 5 in (165 cm)"), ("Hair", "Light/mid brown, mid length"),
          ("Eyes", "Hazel"), ("Nationalities", "British, Portuguese"), ("Location", "Greater London")]
 TRAINING = "Guildford School of Acting, BA (Hons) Actor-Musician, 3 years, 2023 to 2026."
-NOW = "Emily is in the UK tour of <em>Pride and Prejudice* *(sort of)</em>, as 1st cover for Effie, Flo and Tillie."
+NOW = "As of November 2026, Emily is in the UK tour of <em>Pride and Prejudice* *(sort of)</em>, as 1st cover for Effie, Flo and Tillie."
 
 DESIGNS = {
     1: ("Programme", "A theatre programme: a cover with her portrait, the credits as a cast list, the agent on the back page."),
@@ -405,13 +405,15 @@ CSP = ("default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self';
 def page(n, pre, switcher):
     nav = "".join(f'<a href="#{i}">{t}</a>' for i, t in NAVS[n])
     name, idea = DESIGNS[n]
-    sw = ""
-    if switcher:
-        links = "".join(f'<li><a href="{k}.html"{" aria-current=\"page\"" if k == n else ""}>{k}. {v[0]}</a></li>' for k, v in DESIGNS.items())
-        sw = f'''<aside class="switcher" aria-label="Design choices">
-  <p><strong>Design {n} of 5: {name}.</strong> <span class="idea">{idea}</span> <a href="index.html">All five</a> · <a href="../index.html">Live site</a></p>
+    # "Choose a design" on every page, the live one included (Dinis Cruz, 20 November 2026).
+    base = "" if switcher else "designs/"
+    links = "".join(f'<li><a href="{base}{k}.html"{" aria-current=\"page\"" if k == n and switcher else ""}>{k}. {v[0]}</a></li>' for k, v in DESIGNS.items())
+    where = (f'<span class="idea">Design {n} of 5: <strong>{name}</strong>. {idea}</span> <a href="index.html">All five</a> · <a href="../index.html">Home</a>'
+             if switcher else f'<span class="idea">You are looking at design {n} of 5, <strong>{name}</strong>.</span> <a href="designs/index.html">All five</a>')
+    sw = f'''<nav class="switcher" aria-label="Choose a design">
+  <p><strong>Choose a design:</strong> {where}</p>
   <ul>{links}</ul>
-</aside>'''
+</nav>'''
     title = "Emily Cruz" if not switcher else f"Design {n}, {name}, Emily Cruz"
     theme = f"{pre}theme.css" if not switcher else f"d{n}.css"
     return f'''<!doctype html>

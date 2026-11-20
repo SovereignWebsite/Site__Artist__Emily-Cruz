@@ -97,3 +97,5 @@ footer p{max-width:var(--text)}
 .links a{color:var(--link,var(--accent))}
 .sub{color:var(--muted)}
 @media print{.family,.switcher,.bar,.no-print,footer,.btn{display:none!important}body{background:#fff;color:#000}section{padding:1rem 0;break-inside:avoid}a{color:#000}}
+/* Choose a design: one compact line on phones */
+@media (max-width:30rem){.switcher{display:flex;align-items:center;gap:.6rem;padding:.4rem 16px}.switcher p{margin:0;white-space:nowrap}.switcher ul{margin:0}}
