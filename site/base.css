@@ -155,3 +155,5 @@ main:focus{outline:none}
 .design-cards span{color:var(--muted)}
 @media (max-width:40rem){.chooser{order:1}.bar .brand{order:0}.bar nav{order:3}.reel-cta{gap:.5rem;font-size:.92rem}.reel-cta .icon{width:44px;height:44px}.reel-cta .icon::after{left:16px;top:11px;border-left-width:16px;border-top-width:10px;border-bottom-width:10px}}
 .reel-cta span{white-space:nowrap}
+@media (min-width:48rem){.chooser-panel{width:min(94vw,58rem)}.cards{grid-template-columns:repeat(5,1fr)}}
+@media (min-width:40.01rem) and (max-width:47.99rem){.cards{grid-template-columns:repeat(6,1fr)}.cards li{grid-column:span 2}.cards li:nth-child(4){grid-column:2 / span 2}}
