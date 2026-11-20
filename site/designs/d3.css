@@ -1,0 +1,15 @@
+/* Design 3, Blue light: bold. The deep blue of her showcase stage, amber type, showreels up front. */
+:root{--bg:#f3f4fa;--surface:#fff;--fg:#141a33;--muted:#454d6b;--accent:#22349b;--on-accent:#fff;--line:#d9dcec;--note:#e6e9f7;--field-border:#6c7397;--bar:#0e1747;--field:#0e1747;--amber:#ffc861}
+@media (prefers-color-scheme:dark){:root{--bg:#0a0f2e;--surface:#121a45;--fg:#eef0ff;--muted:#b4bbe0;--accent:#ffc861;--on-accent:#0a0f2e;--line:#232c63;--note:#141d50;--field-border:#7079ad;--bar:#060a22;--field:#060a22}}
+.bar{border-bottom-color:#2a3577}
+.bar .brand,.bar nav a{color:#fff}
+.hero{margin:0 calc(50% - 50vw);padding:clamp(2.5rem,8vw,5rem) max(16px,calc(50vw - 34rem));background:var(--field) radial-gradient(ellipse at 70% 30%,#2b49c9 0,transparent 60%);color:#fff;border:0}
+.hero h1{color:var(--amber);font-size:clamp(3.2rem,12vw,6.5rem);font-weight:800;letter-spacing:-.03em}
+.hero .eyebrow,.hero .pronouns{color:#dfe4ff}
+.hero .btn{color:#fff;border-color:var(--amber)}
+.hero .btn.primary{background:var(--amber);color:#0e1747}
+.hero a{color:var(--amber)}
+.hero figcaption{color:#cdd3f5;margin-top:1.3rem}
+.hero-photo img{border-radius:0;box-shadow:12px 12px 0 var(--amber)}
+.play{--play-bg:radial-gradient(circle at center,#2b49c9,#0e1747)}
+h2{text-transform:uppercase;letter-spacing:.04em;font-weight:800}

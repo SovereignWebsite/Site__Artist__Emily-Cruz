@@ -1,0 +1,15 @@
+/* Design 5, Score: the page read as a piece of music, in numbered bars, on stave lines. */
+:root{--bg:#fbf8f3;--surface:#fff;--fg:#1f1a16;--muted:#5a5048;--accent:#9e3f24;--on-accent:#fff;--line:#e4dcd1;--note:#f3e9df;--field-border:#8a7d71;--bar:#fbf8f3;--head:var(--serif);--stave:#c9bcae}
+@media (prefers-color-scheme:dark){:root{--bg:#16120f;--surface:#1f1915;--fg:#f1e9e0;--muted:#c2b6aa;--accent:#f0a07f;--on-accent:#16120f;--line:#3a302a;--note:#271e19;--field-border:#86776a;--bar:#16120f;--stave:#3f352e}}
+main{counter-reset:bar}
+section{border-bottom:0;position:relative}
+section h2{counter-increment:bar;display:flex;align-items:baseline;gap:.8rem}
+section h2::before{content:counter(bar);font:600 .9rem ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--on-accent);background:var(--accent);min-width:2rem;height:2rem;display:inline-flex;align-items:center;justify-content:center;border-radius:.2rem}
+section:not(.hero)::before{content:"";display:block;height:2.6rem;margin-bottom:1.5rem;background:repeating-linear-gradient(to bottom,var(--stave) 0 1px,transparent 1px 10px);border-left:3px solid var(--fg);border-right:1px solid var(--fg)}
+.hero{background:repeating-linear-gradient(to bottom,transparent 0 47px,var(--stave) 47px 48px);padding-top:clamp(2.5rem,8vw,5rem)}
+.hero h1{font-style:italic;font-size:clamp(3rem,10vw,5.4rem)}
+.hero-photo img{border-radius:999px 999px .4rem .4rem}
+.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em}
+.hero-text{background:var(--bg);padding:.5rem 0}
+.tags li{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9rem}
+.btn{border-radius:.3rem}

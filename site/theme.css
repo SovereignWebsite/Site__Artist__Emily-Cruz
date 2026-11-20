@@ -1,0 +1,4 @@
+/* Design 1, Sage: quiet. Sage green, plain sans, photo and words side by side. */
+:root{--bg:#f4f5f1;--surface:#fbfcf9;--fg:#1c1d1a;--muted:#4f524b;--accent:#3f5c4a;--on-accent:#fff;--line:#dfe2da;--note:#e7ece4;--field-border:#7d867a;--bar:#f4f5f1}
+@media (prefers-color-scheme:dark){:root{--bg:#151714;--surface:#1c1f1b;--fg:#ecede8;--muted:#b0b4aa;--accent:#9cc0a8;--on-accent:#10140f;--line:#2e322c;--note:#1f2a22;--field-border:#6f7a6c;--bar:#151714}}
+.hero{padding-top:clamp(2rem,6vw,4rem)}
