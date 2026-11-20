@@ -20,3 +20,10 @@ h2{font-size:clamp(1.2rem,3vw,1.6rem)}
 .btn{border-radius:0;font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em}
 .tags li{border-radius:0;font-family:var(--mono);font-size:.88rem}
 .role{font-style:italic}
+/* grease pencil: the picks circled in red, as on a real proof sheet */
+.frame-cell:nth-child(1) a,.frame-cell:nth-child(6) a,.frame-cell:nth-child(9) a{position:relative}
+.frame-cell:nth-child(1) a::after,.frame-cell:nth-child(6) a::after,.frame-cell:nth-child(9) a::after{content:"";position:absolute;inset:6% 8%;border:4px solid #e3271b;border-radius:48% 52% 45% 55%/55% 45% 55% 45%;transform:rotate(-4deg);pointer-events:none;box-shadow:0 0 0 1px rgba(0,0,0,.2)}
+.frame-cell:nth-child(6) a::after{transform:rotate(3deg);border-radius:52% 48% 55% 45%}
+.sheet{background:#1b1916}
+.sheet-head h1{color:#f3efe6}.sheet-head p{color:#cfc8bb}
+.sheet{margin-inline:calc(50% - 50vw);padding-inline:max(16px,calc(50vw - 42rem))}

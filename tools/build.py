@@ -117,18 +117,20 @@ def fig(item, pre, cls=""):
 
 
 def reel(r, pre, h="h3"):
+    """A cinematic poster frame; the play control is part of the frame. Nothing loads from Spotlight until pressed."""
     cid, title, dur, poster, alt, cap = r
     p = f"{pre}images/{poster}"
-    return f'''<article class="reel">
-      <div class="frame" data-src="{REEL}{cid}">
+    plain = html.unescape(title.replace("<em>", "").replace("</em>", ""))
+    return f'''<figure class="reel">
+      <div class="frame" data-src="{REEL}{cid}" data-title="{html.escape(plain)}">
         <a class="play" href="{REEL}{cid}">
-          <img src="{p}-640.webp" srcset="{p}-640.webp 640w, {p}-1280.webp 1280w" sizes="(min-width: 46rem) 40rem, 100vw" alt="{html.escape(alt)}" width="640" height="360" loading="lazy" decoding="async">
-          <span class="icon" aria-hidden="true"></span><span class="label">Play on Spotlight</span>
+          <img src="{p}-640.webp" srcset="{p}-640.webp 640w, {p}-1280.webp 1280w" sizes="(min-width: 46rem) 64rem, 100vw" alt="{html.escape(alt)}" width="1280" height="720" loading="lazy" decoding="async">
+          <span class="reel-title">{title}</span>
+          <span class="reel-cta"><span class="icon" aria-hidden="true"></span><span>Play on Spotlight</span><span class="dur">{dur}</span></span>
         </a>
       </div>
-      <{h}>{title}</{h}>
-      <p class="meta">{dur}. {cap}.</p>
-    </article>'''
+      <figcaption class="meta">{cap}.</figcaption>
+    </figure>'''
 
 
 SPOT_NOTE = ('<p class="note">Spotlight hosts these reels. Nothing is sent to Spotlight until you press play; '
@@ -171,62 +173,68 @@ def facts():
 
 
 # ---------------------------------------------------------------- 1 Programme
+def spread(items, pre, cls="spread"):
+    figs = "".join(f'<figure><a href="{pre}images/{n}-1400.webp">{img(n, a, pre, sizes="(min-width: 46rem) 34vw, 100vw")}</a><figcaption>{c}</figcaption></figure>'
+                   for n, a, c in items)
+    return f'<div class="{cls} bleed">{figs}</div>'
+
+
 def programme(pre):
     name, alt, cap = HEADSHOT
     cast = "".join(f'''<li><span class="role">{r}</span><span class="dots" aria-hidden="true"></span><span class="prod"><em>{html.escape(p)}</em></span>
-        <span class="by">{t}. {c}, {y}. Directed by {d}.</span></li>''' for y, p, t, r, d, c in CREDITS)
-    stills = "".join(fig(s, pre) for s in PHOTOS + STILLS)
-    return f'''<section class="cover" id="top" aria-labelledby="name">
-  <figure class="cover-art">
-    {img(name, alt, pre, lazy=False, sizes="(min-width: 46rem) 36rem, 100vw", big=True)}
-    <div class="cover-title">
-      <p class="kicker">Now on tour</p>
-      <p class="show"><em>Pride and Prejudice* *(sort of)</em></p>
-      <h1 id="name">Emily Cruz</h1>
-      <p class="sub"><em>Actor-musician and artist</em>, she/her</p>
-    </div>
-    <figcaption>Cover: {cap}</figcaption>
-  </figure>
-  <div class="cover-foot">
-    <p class="lead">{NOW}</p>
-    <p><a class="btn primary" href="#contact">Contact her agent</a></p>
-    <p class="links">{links_inline()}</p>
+        <span class="by">{c}, {y}. Directed by {d}.</span></li>''' for y, p, t, r, d, c in CREDITS)
+    sep = ' <span aria-hidden="true">·</span> '
+    notes = "".join(f'<div><h3>{g}</h3><p>{sep.join(items)}</p></div>' for g, items in SKILLS)
+    return f'''<section class="cover bleed" id="top" aria-labelledby="name">
+  {img(name, alt, pre, lazy=False, sizes="100vw", big=True)}
+  <div class="cover-text">
+    <p class="kicker">Now on tour <span aria-hidden="true">·</span> <em>Pride and Prejudice* *(sort of)</em></p>
+    <h1 id="name">Emily <span>Cruz</span></h1>
+    <p class="sub">Actor-musician and artist</p>
   </div>
+  <p class="photo-credit">Cover {cap}</p>
 </section>
-<section id="credits" aria-labelledby="credits-h">
+<section class="band bleed" aria-label="Now">
+  <p class="lead">{NOW}</p>
+  <p class="cta"><a class="btn primary" href="#contact">Contact her agent</a> <span class="links">{links_inline()}</span></p>
+</section>
+<section id="credits" class="cast-page bleed" aria-labelledby="credits-h">
   <p class="kicker">The company</p>
-  <h2 id="credits-h">Cast list</h2>
+  <h2 id="credits-h">Credits</h2>
   <ol class="cast">{cast}</ol>
 </section>
-<section id="reels" aria-labelledby="reels-h">
+{spread(PHOTOS[:3], pre)}
+<section id="reels" class="screen bleed" aria-labelledby="reels-h">
   <p class="kicker">On screen</p>
   <h2 id="reels-h">Showreels</h2>
   {SPOT_NOTE}
   <div class="reels">{reel(SHOWCASE_REEL, pre)}{reel(INSTR_REEL, pre)}</div>
 </section>
-<section id="gallery" aria-labelledby="gallery-h">
-  <p class="kicker">In rehearsal and on stage</p>
+<section id="gallery" class="plates" aria-labelledby="gallery-h">
+  <p class="kicker">In performance</p>
   <h2 id="gallery-h">Photographs</h2>
-  <div class="gallery">{stills}</div>
+  {spread(STILLS + [PHOTOS[3]], pre, cls="mosaic")}
 </section>
-<section id="skills" aria-labelledby="skills-h">
+<section id="skills" class="notes" aria-labelledby="skills-h">
   <p class="kicker">Programme notes</p>
   <h2 id="skills-h">Skills</h2>
-  {skills_tags()}
+  <div class="note-cols">{notes}</div>
   {facts()}
 </section>
-<section id="company" aria-labelledby="company-h">
+<section id="company" class="company bleed" aria-labelledby="company-h">
   <p class="kicker">About the company</p>
   <h2 id="company-h">Trained at Guildford School of Acting</h2>
   <p>{TRAINING}</p>
   <p><a href="{GSA}">The 2026 BA (Hons) Actor-Musician graduates, on the GSA site</a></p>
 </section>
-<section id="contact" class="back" aria-labelledby="contact-h">
-  <p class="kicker">Back page</p>
-  <h2 id="contact-h">Representation</h2>
-  <p>For casting and all enquiries, please contact Emily's agent.</p>
-  {address()}
-  <p><a href="{SPOTLIGHT}">Spotlight profile</a></p>
+<section id="contact" class="back bleed" aria-labelledby="contact-h">
+  <div class="back-frame">
+    <p class="kicker">Representation</p>
+    <h2 id="contact-h">Galloways</h2>
+    <p>For casting and all enquiries, please contact Emily's agent.</p>
+    {address()}
+    <p><a href="{SPOTLIGHT}">Spotlight profile</a></p>
+  </div>
 </section>'''
 
 
@@ -234,30 +242,29 @@ def programme(pre):
 def bluelight(pre):
     name, alt, cap = HEADSHOT
     gallery = "".join(fig(s, pre) for s in STILLS + PHOTOS)
-    return f'''<section class="stage" id="top" aria-labelledby="name">
-  <div class="spot">
-    <figure>{img(name, alt, pre, lazy=False, sizes="(min-width: 46rem) 26rem, 80vw", big=True)}<figcaption>{cap}</figcaption></figure>
-  </div>
+    return f'''<section class="stage bleed" id="top" aria-labelledby="name">
+  <div class="haze" aria-hidden="true"></div><div class="cone" aria-hidden="true"></div>
+  <figure class="lit">{img(name, alt, pre, lazy=False, sizes="(min-width: 46rem) 30rem, 64vw", big=True)}</figure>
   <div class="billing">
-    <p class="kicker">Actor-musician and artist, she/her</p>
+    <p class="kicker">Actor-musician and artist</p>
     <h1 id="name">Emily Cruz</h1>
     <p class="lead">{NOW}</p>
-    <p><a class="btn primary" href="#contact">Contact her agent</a></p>
-    <p class="links">{links_inline()}</p>
+    <p class="cta"><a class="btn primary" href="#contact">Contact her agent</a> <span class="links">{links_inline()}</span></p>
   </div>
+  <p class="photo-credit">{cap}</p>
 </section>
-<section id="reels" class="main-act" aria-labelledby="reels-h">
+<section id="reels" class="main-act bleed" aria-labelledby="reels-h">
   <p class="kicker">The main act</p>
   <h2 id="reels-h">Showreels</h2>
   {SPOT_NOTE}
   <div class="acts">{reel(SHOWCASE_REEL, pre)}{reel(INSTR_REEL, pre)}</div>
 </section>
-<section id="gallery" aria-labelledby="gallery-h">
+<section id="gallery" class="lights bleed" aria-labelledby="gallery-h">
   <h2 id="gallery-h">Under the lights</h2>
   <div class="gallery">{gallery}</div>
 </section>
 <section id="credits" aria-labelledby="credits-h">
-  <h2 id="credits-h">Credits</h2>
+  <h2 id="credits-h">Billing</h2>
   {credits_table()}
   <h3>Training</h3>
   <p>{TRAINING}</p>
@@ -267,10 +274,94 @@ def bluelight(pre):
   {skills_tags()}
   {facts()}
 </section>
-<section id="contact" aria-labelledby="contact-h">
-  <h2 id="contact-h">Representation</h2>
+<section id="contact" class="stage-door bleed" aria-labelledby="contact-h">
+  <h2 id="contact-h">Stage door</h2>
   <p>For casting and all enquiries, please contact Emily's agent.</p>
   {address()}
+</section>'''
+
+
+# ---------------------------------------------------------------- 4 Score
+def score(pre):
+    name, alt, cap = HEADSHOT
+    systems = "".join(f'''<div class="system"><p class="part">{g}</p><div class="staff"><span class="clef" aria-hidden="true">𝄞</span><span class="time" aria-hidden="true"><span>4</span><span>4</span></span><ol class="notes">{"".join(f"<li><span class='lyric'>{s}</span></li>" for s in items)}</ol></div></div>'''
+                      for g, items in SKILLS)
+    rep = "".join(f'<li><span class="no">No. {len(CREDITS) - i}</span><span class="t"><em>{html.escape(p)}</em> <span class="role">{r}</span></span><span class="dots" aria-hidden="true"></span><span class="yr">{y}</span><span class="by">{c}. Directed by {d}.</span></li>'
+                  for i, (y, p, t, r, d, c) in enumerate(CREDITS))
+    plates = "".join(fig(s, pre) for s in STILLS[1::2] + STILLS[0::2] + PHOTOS)
+    return f'''<div class="sheet">
+<section class="title-page" id="top" aria-labelledby="name">
+  <p class="dedication"><em>A portfolio in five movements</em></p>
+  <h1 id="name">Emily Cruz</h1>
+  <p class="for"><em>for voice, piano, accordion, guitar, bass guitar, double bass and saxophones</em></p>
+  <figure class="frontis">{img(name, alt, pre, lazy=False, sizes="(min-width: 46rem) 20rem, 60vw", big=True)}<figcaption>{cap}</figcaption></figure>
+  <p class="lead">{NOW}</p>
+  <p class="cta"><a class="btn primary" href="#contact">Contact her agent</a> <span class="links">{links_inline()}</span></p>
+</section>
+<section id="reels" class="movement" aria-labelledby="reels-h">
+  <h2 id="reels-h"><span class="mark" aria-hidden="true">A</span> I. Overture <span class="tempo">Showreels, the instrumental first</span></h2>
+  {SPOT_NOTE}
+  <div class="reels">{reel(INSTR_REEL, pre)}{reel(SHOWCASE_REEL, pre)}</div>
+</section>
+<section id="skills" class="movement" aria-labelledby="skills-h">
+  <h2 id="skills-h"><span class="mark" aria-hidden="true">B</span> II. Instrumentation <span class="tempo">Skills, one part per staff</span></h2>
+  {systems}
+  {facts()}
+</section>
+<section id="credits" class="movement" aria-labelledby="credits-h">
+  <h2 id="credits-h"><span class="mark" aria-hidden="true">C</span> III. Repertoire <span class="tempo">Credits, latest first</span></h2>
+  <ol class="repertoire">{rep}</ol>
+  <p class="training"><strong>Training.</strong> {TRAINING}</p>
+</section>
+<section id="gallery" class="movement" aria-labelledby="gallery-h">
+  <h2 id="gallery-h"><span class="mark" aria-hidden="true">D</span> IV. Interlude <span class="tempo">Plates</span></h2>
+  <div class="gallery">{plates}</div>
+</section>
+<section id="contact" class="movement coda" aria-labelledby="contact-h">
+  <h2 id="contact-h"><span class="mark" aria-hidden="true">E</span> V. Coda <span class="tempo">Representation</span></h2>
+  <p>For casting and all enquiries, please contact Emily's agent.</p>
+  {address()}
+  <p class="fine" aria-hidden="true">Fine</p>
+</section>
+</div>'''
+
+
+# ---------------------------------------------------------------- 5 Brief
+def brief(pre):
+    name, alt, cap = HEADSHOT
+    gallery = "".join(fig(s, pre) for s in PHOTOS + STILLS)
+    rows = "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in FACTS)
+    return f'''<section class="card bleed" id="top" aria-labelledby="name">
+  <figure class="card-photo">{img(name, alt, pre, lazy=False, sizes="(min-width: 46rem) 40vw, 100vw", big=True)}<figcaption>{cap}</figcaption></figure>
+  <div class="card-body">
+    <p class="kicker">Casting brief <span aria-hidden="true">·</span> November 2026</p>
+    <h1 id="name">Emily Cruz</h1>
+    <p class="sub">Actor-musician and artist, she/her</p>
+    <p class="lead">{NOW}</p>
+    <dl class="facts card-facts"><div><dt>Agent</dt><dd><a href="#contact">Galloways</a></dd></div>{rows}<div><dt>Training</dt><dd>GSA, BA (Hons) Actor-Musician, 2023 to 2026</dd></div></dl>
+    <p class="cta"><a class="btn primary" href="#contact">Contact her agent</a> <span class="links"><a href="{SPOTLIGHT}">Spotlight</a> <span aria-hidden="true">·</span> <a href="#reels">Showreels</a></span></p>
+  </div>
+</section>
+<section id="credits" aria-labelledby="credits-h">
+  <h2 id="credits-h">Credits</h2>
+  {credits_table()}
+</section>
+<section id="skills" aria-labelledby="skills-h">
+  <h2 id="skills-h">Skills</h2>
+  <dl class="skill-lines">{"".join(f"<div><dt>{g}</dt><dd>{', '.join(items)}</dd></div>" for g, items in SKILLS)}</dl>
+</section>
+<section id="contact" class="agent" aria-labelledby="contact-h">
+  <h2 id="contact-h">Agent</h2>
+  {address()}
+</section>
+<section id="reels" class="no-print" aria-labelledby="reels-h">
+  <h2 id="reels-h">Showreels</h2>
+  {SPOT_NOTE}
+  <div class="reels">{reel(SHOWCASE_REEL, pre)}{reel(INSTR_REEL, pre)}</div>
+</section>
+<section id="gallery" class="no-print" aria-labelledby="gallery-h">
+  <h2 id="gallery-h">Photographs</h2>
+  <div class="gallery">{gallery}</div>
 </section>'''
 
 
@@ -313,114 +404,49 @@ def contactsheet(pre):
 </section>'''
 
 
-# ---------------------------------------------------------------- 4 Score
-def score(pre):
-    name, alt, cap = HEADSHOT
-    staves = "".join(f'''<div class="stave-row"><h3>{g}</h3><ol class="stave">{"".join(f"<li>{s}</li>" for s in items)}</ol></div>'''
-                     for g, items in SKILLS)
-    repertoire = "".join(f'<li><span class="bar-no">{len(CREDITS) - i}</span><em>{html.escape(p)}</em> <span class="role">{r}</span><span class="by">{c}, {y}. Directed by {d}.</span></li>'
-                         for i, (y, p, t, r, d, c) in enumerate(CREDITS))
-    stills = "".join(fig(s, pre) for s in STILLS[1::2] + STILLS[0::2] + PHOTOS)
-    return f'''<section class="title-page" id="top" aria-labelledby="name">
-  <div class="title-text">
-    <p class="kicker">A portfolio in five movements</p>
-    <h1 id="name">Emily Cruz</h1>
-    <p class="for"><em>for voice, piano, accordion, guitar, bass guitar, double bass and saxophones</em></p>
-    <p class="lead">{NOW}</p>
-    <p><a class="btn primary" href="#contact">Contact her agent</a></p>
-    <p class="links">{links_inline()}</p>
-  </div>
-  <figure class="title-portrait">{img(name, alt, pre, lazy=False, sizes="(min-width: 46rem) 22rem, 70vw", big=True)}<figcaption>{cap}</figcaption></figure>
-</section>
-<section id="reels" class="movement" aria-labelledby="reels-h">
-  <h2 id="reels-h"><span class="mv">I.</span> Overture <span class="tempo">Showreels, instrumental first</span></h2>
-  {SPOT_NOTE}
-  <div class="reels">{reel(INSTR_REEL, pre)}{reel(SHOWCASE_REEL, pre)}</div>
-</section>
-<section id="skills" class="movement" aria-labelledby="skills-h">
-  <h2 id="skills-h"><span class="mv">II.</span> Instrumentation <span class="tempo">Skills</span></h2>
-  <div class="staves">{staves}</div>
-  {facts()}
-</section>
-<section id="credits" class="movement" aria-labelledby="credits-h">
-  <h2 id="credits-h"><span class="mv">III.</span> Repertoire <span class="tempo">Credits, latest first</span></h2>
-  <ol class="repertoire" reversed>{repertoire}</ol>
-  <p class="training"><strong>Training.</strong> {TRAINING}</p>
-</section>
-<section id="gallery" class="movement" aria-labelledby="gallery-h">
-  <h2 id="gallery-h"><span class="mv">IV.</span> Interlude <span class="tempo">Photographs</span></h2>
-  <div class="gallery">{stills}</div>
-</section>
-<section id="contact" class="movement" aria-labelledby="contact-h">
-  <h2 id="contact-h"><span class="mv">V.</span> Coda <span class="tempo">Representation</span></h2>
-  <p>For casting and all enquiries, please contact Emily's agent.</p>
-  {address()}
-</section>'''
-
-
-# ---------------------------------------------------------------- 5 Brief
-def brief(pre):
-    name, alt, cap = HEADSHOT
-    gallery = "".join(fig(s, pre) for s in PHOTOS + STILLS)
-    return f'''<section class="brief-top" id="top" aria-labelledby="name">
-  <figure>{img(name, alt, pre, lazy=False, sizes="(min-width: 46rem) 16rem, 60vw")}<figcaption>{cap}</figcaption></figure>
-  <div>
-    <h1 id="name">Emily Cruz</h1>
-    <p class="sub">Actor-musician and artist, she/her</p>
-    <p>{NOW}</p>
-    <dl class="facts brief-facts"><div><dt>Agent</dt><dd><a href="#contact">Galloways</a></dd></div>{"".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in FACTS)}<div><dt>Training</dt><dd>GSA, BA (Hons) Actor-Musician, 2023 to 2026</dd></div></dl>
-    <p class="links"><a href="{SPOTLIGHT}">Spotlight profile</a> <span aria-hidden="true">·</span> <a href="#reels">Showreels</a> <span aria-hidden="true">·</span> <a href="{GSA}">GSA graduates 2026</a></p>
-  </div>
-</section>
-<section id="credits" aria-labelledby="credits-h">
-  <h2 id="credits-h">Credits</h2>
-  {credits_table()}
-</section>
-<section id="skills" aria-labelledby="skills-h">
-  <h2 id="skills-h">Skills</h2>
-  <dl class="skill-lines">{"".join(f"<div><dt>{g}</dt><dd>{', '.join(items)}</dd></div>" for g, items in SKILLS)}</dl>
-</section>
-<section id="contact" aria-labelledby="contact-h">
-  <h2 id="contact-h">Representation</h2>
-  {address()}
-</section>
-<section id="reels" class="no-print" aria-labelledby="reels-h">
-  <h2 id="reels-h">Showreels</h2>
-  {SPOT_NOTE}
-  <div class="reels">{reel(SHOWCASE_REEL, pre)}{reel(INSTR_REEL, pre)}</div>
-</section>
-<section id="gallery" class="no-print" aria-labelledby="gallery-h">
-  <h2 id="gallery-h">Photographs</h2>
-  <div class="gallery">{gallery}</div>
-</section>'''
-
-
 BODIES = {1: programme, 2: bluelight, 3: contactsheet, 4: score, 5: brief}
 NAVS = {
     1: [("credits", "Cast list"), ("reels", "Reels"), ("gallery", "Photos"), ("skills", "Skills"), ("contact", "Contact")],
     2: [("reels", "Reels"), ("gallery", "Photos"), ("credits", "Credits"), ("skills", "Skills"), ("contact", "Contact")],
     3: [("about", "Notes"), ("reels", "Reels"), ("credits", "Credits"), ("skills", "Skills"), ("contact", "Contact")],
-    4: [("reels", "I Reels"), ("skills", "II Skills"), ("credits", "III Credits"), ("gallery", "IV Photos"), ("contact", "V Agent")],
+    4: [("reels", "I"), ("skills", "II"), ("credits", "III"), ("gallery", "IV"), ("contact", "V")],
     5: [("credits", "Credits"), ("skills", "Skills"), ("contact", "Agent"), ("reels", "Reels"), ("gallery", "Photos")],
 }
 CSP = ("default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; "
        "frame-src https://mediaviewer.spotlight.com; base-uri 'none'; form-action 'none'")
 
 
+LINES = {  # one line per design, for the chooser cards
+    1: "A West End programme", 2: "The showcase stage", 3: "A photographer's proof sheet",
+    4: "An engraved score", 5: "A casting brief",
+}
+
+
+def cards(pre, current, on_home):
+    out = []
+    for k, (nm, _) in DESIGNS.items():
+        href = f"{pre}designs/{k}.html" if on_home else f"{k}.html"
+        cur = ' aria-current="page"' if k == current else ""
+        shot = f"{pre}images/shots/d{k}"
+        out.append(f'<li><a href="{href}"{cur}><img src="{shot}-480.webp" alt="" width="480" height="300" loading="lazy" decoding="async">'
+                   f'<strong>{k}. {nm}</strong><span>{LINES[k]}</span></a></li>')
+    return "".join(out)
+
+
 def page(n, pre, switcher):
     nav = "".join(f'<a href="#{i}">{t}</a>' for i, t in NAVS[n])
-    name, idea = DESIGNS[n]
-    # "Choose a design" on every page, the live one included (Dinis Cruz, 20 November 2026).
-    base = "" if switcher else "designs/"
-    links = "".join(f'<li><a href="{base}{k}.html"{" aria-current=\"page\"" if k == n and switcher else ""}>{k}. {v[0]}</a></li>' for k, v in DESIGNS.items())
-    where = (f'<span class="idea">Design {n} of 5: <strong>{name}</strong>. {idea}</span> <a href="index.html">All five</a> · <a href="../index.html">Home</a>'
-             if switcher else f'<span class="idea">You are looking at design {n} of 5, <strong>{name}</strong>.</span> <a href="designs/index.html">All five</a>')
-    sw = f'''<nav class="switcher" aria-label="Choose a design">
-  <p><strong>Choose a design:</strong> {where}</p>
-  <ul>{links}</ul>
-</nav>'''
-    title = "Emily Cruz" if not switcher else f"Design {n}, {name}, Emily Cruz"
-    theme = f"{pre}theme.css" if not switcher else f"d{n}.css"
+    on_home = not switcher
+    pre_root = pre  # path to site root
+    # "Choose a design" on every page (Dinis Cruz, 20 November 2026): one button in the header, opening five cards. No script.
+    chooser = f'''<details class="chooser">
+    <summary>Choose a design</summary>
+    <div class="chooser-panel">
+      <ul class="cards">{cards(pre_root if on_home else "../", n, on_home)}</ul>
+      <p class="all"><a href="{"designs/" if on_home else ""}index.html">All five, side by side</a></p>
+    </div>
+  </details>'''
+    title = "Emily Cruz" if on_home else f"{DESIGNS[n][0]} design, Emily Cruz"
+    theme = f"{pre}theme.css" if on_home else f"d{n}.css"
     return f'''<!doctype html>
 <html lang="en-GB" class="d{n}">
 <head>
@@ -439,10 +465,10 @@ def page(n, pre, switcher):
 <body>
 <a class="skip" href="#main">Skip to content</a>
 {FAMILY}
-{sw}
 <header class="bar">
-  <a class="brand" href="#top">Emily Cruz</a>
+  <a class="brand" href="{"#top" if on_home else "../index.html"}">Emily Cruz</a>
   <nav aria-label="Sections">{nav}</nav>
+  {chooser}
 </header>
 <main id="main" tabindex="-1">
 {BODIES[n](pre)}
@@ -456,28 +482,29 @@ def page(n, pre, switcher):
 
 
 def designs_index():
-    cards = "".join(f'<li><a href="{k}.html"><strong>{k}. {v[0]}</strong></a><p>{v[1]}</p></li>' for k, v in DESIGNS.items())
+    big = "".join(f'<li><a href="{k}.html"><img src="../images/shots/d{k}-960.webp" alt="" width="960" height="600" loading="lazy" decoding="async">'
+                  f'<strong>{k}. {v[0]}</strong><span>{v[1]}</span></a></li>' for k, v in DESIGNS.items())
     return f'''<!doctype html>
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
 <title>Five designs, Emily Cruz</title>
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../base.css">
 <link rel="stylesheet" href="d5.css">
 </head>
-<body>
+<body class="designs-page">
 <a class="skip" href="#main">Skip to content</a>
 {FAMILY}
 <header class="bar"><a class="brand" href="../index.html">Emily Cruz</a></header>
 <main id="main" tabindex="-1">
 <section>
-<h1>Five designs</h1>
-<p>The same facts and photographs, each built around a different idea from Emily's world. Emily chooses one; it becomes the live site. Until then the live site uses design {CHOSEN}, {DESIGNS[CHOSEN][0]}.</p>
-<ol class="design-list">{cards}</ol>
+<h1>Choose a design</h1>
+<p>The same facts and photographs, set five ways. The home page uses {DESIGNS[CHOSEN][0]}; Emily chooses which one stays.</p>
+<ol class="design-cards">{big}</ol>
 </section>
 </main>
 </body>

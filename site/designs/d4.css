@@ -1,30 +1,66 @@
-/* Design 4, Score: the instrumental reel as the overture, movements for sections, skills on staves. */
-:root{--bg:#fbf8f3;--surface:#fff;--fg:#1f1a16;--muted:#5a5048;--accent:#9e3f24;--on-accent:#fff;--line:#e4dcd1;--note:#f3e9df;--field-border:#8a7d71;--bar:#fbf8f3;--head:var(--serif);--stave:#9b8d80}
-@media (prefers-color-scheme:dark){:root{--bg:#16120f;--surface:#1f1915;--fg:#f1e9e0;--muted:#c2b6aa;--accent:#f0a07f;--on-accent:#16120f;--line:#3a302a;--note:#271e19;--field-border:#86776a;--bar:#16120f;--stave:#6a5d52}}
+/* Design 4, Score: the page is an engraved score. A title page, rehearsal marks for movements, each skill group
+   a part on its own five-line staff with clef and time signature, notes with stems, the skills as lyrics. */
+:root{--bg:#d9d2c6;--surface:#fdfbf6;--fg:#15120f;--muted:#4d453d;--accent:#7a1d12;--on-accent:#fff;--line:#d8cfc2;--note:#f3ece0;--field-border:#7d7266;--bar:#fdfbf6;--head:var(--serif);--ink:#15120f;--paper:#fdfbf6;--staff:#2a2420}
+@media (prefers-color-scheme:dark){:root{--bg:#0b0a09;--surface:#1a1714;--fg:#efe7dc;--muted:#c4b8aa;--accent:#f0a07f;--on-accent:#1a1714;--line:#3a332c;--note:#241f1b;--field-border:#86796c;--bar:#1a1714;--ink:#efe7dc;--paper:#1a1714;--staff:#d9cfc2}}
+body{background:var(--bg) radial-gradient(ellipse at 50% 0,rgba(255,255,255,.25),transparent 60%)}
+.bar{background:var(--paper)}
+main{max-width:64rem}
+.sheet{background:var(--paper);color:var(--ink);margin:clamp(.5rem,3vw,2.5rem) 0;padding:clamp(1.2rem,6vw,5rem) clamp(1rem,6vw,5rem);box-shadow:0 1px 0 var(--line),0 30px 70px rgba(0,0,0,.28);position:relative}
+.sheet::after{content:"";position:absolute;inset:10px;border:1px solid var(--line);pointer-events:none}
+section{border-bottom:0}
 h1,h2,h3{font-family:var(--serif)}
-.title-page{display:grid;gap:2rem;align-items:center;text-align:center;padding-top:clamp(2rem,7vw,5rem)}
-@media (min-width:52rem){.title-page{grid-template-columns:3fr 2fr;text-align:left}}
-.title-page h1{font-size:clamp(3.2rem,11vw,6rem);font-weight:400;letter-spacing:.02em;margin:.2rem 0}
-.title-page .for{font-family:var(--serif);font-size:1.2rem;color:var(--muted)}
-.title-portrait img{border-radius:.3rem;outline:1px solid var(--stave);outline-offset:8px}
-.title-portrait{max-width:22rem;margin:0 auto}
-.movement h2{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .8rem;font-weight:400;font-size:clamp(1.8rem,5vw,2.6rem)}
-.mv{color:var(--accent);font-weight:700}
-.tempo{font-family:var(--sans);font-size:.95rem;font-style:italic;color:var(--muted)}
-.movement{border-bottom:0;position:relative}
-.movement::before{content:"";display:block;height:41px;margin-bottom:1.2rem;background:repeating-linear-gradient(to bottom,var(--stave) 0 1px,transparent 1px 10px);border-left:4px double var(--fg);border-right:1px solid var(--fg)}
-/* skills on staves: five lines, each skill a note set on a line or space */
-.stave-row{margin:0 0 1.6rem}
-.stave-row h3{margin:0 0 .3rem;font-style:italic;font-weight:400}
-.stave{list-style:none;margin:0;padding:12px .5rem;display:flex;flex-wrap:wrap;gap:12px 1.1rem;align-items:flex-start;background:repeating-linear-gradient(to bottom,var(--stave) 0 1px,transparent 1px 12px);background-size:100% 60px;border-left:2px solid var(--fg)}
-.stave li{position:relative;padding:.05rem .5rem .05rem 1.35rem;background:var(--bg);border-radius:.2rem;font-size:.95rem;line-height:1.5}
-.stave li::before{content:"";position:absolute;left:.2rem;top:50%;width:.8rem;height:.6rem;margin-top:-.3rem;border-radius:50%;background:var(--fg);transform:rotate(-20deg)}
-.stave li:nth-child(3n+2){margin-top:12px}.stave li:nth-child(3n){margin-top:24px}
-.repertoire{list-style:none;padding:0;margin:0}
-.repertoire li{display:grid;grid-template-columns:2.6rem 1fr;column-gap:.8rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
-.repertoire .bar-no{grid-row:span 3;font:600 .85rem ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--on-accent);background:var(--accent);height:1.9rem;display:flex;align-items:center;justify-content:center;border-radius:.2rem}
-.repertoire em{font-family:var(--serif);font-size:1.15rem}
-.repertoire .role{font-style:italic;color:var(--accent-text,var(--fg))}
-.repertoire .by{color:var(--muted);font-size:.95rem}
-.training{margin-top:1rem}
-.btn{border-radius:.3rem}
+/* title page, as engraved */
+.title-page{text-align:center;padding-top:clamp(1rem,4vw,3rem)}
+.title-page .dedication{font-family:var(--serif);color:var(--muted);font-size:1.05rem;margin:0 0 1rem}
+.title-page h1{font-size:clamp(3.4rem,13vw,7.5rem);font-weight:400;letter-spacing:.06em;font-variant:small-caps;margin:0;line-height:.95}
+.title-page .for{font-family:var(--serif);font-size:clamp(1.1rem,2.6vw,1.45rem);margin:.8rem auto 2rem;max-width:34ch}
+.frontis{max-width:20rem;margin:0 auto 1.5rem}
+.frontis img{filter:grayscale(1) contrast(1.08);border:1px solid var(--ink);padding:8px;background:var(--paper)}
+.title-page .lead{font-family:var(--serif);font-size:1.15rem;max-width:36rem;margin:0 auto 1rem}
+.title-page .cta{justify-content:center}
+.btn{border-radius:0;font-family:var(--serif)}
+/* movements with rehearsal marks */
+.movement{padding-top:clamp(2.5rem,6vw,4rem)}
+.movement h2{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem 1rem;font-weight:400;font-size:clamp(1.9rem,5.5vw,3rem);border-bottom:2px solid var(--ink);padding-bottom:.5rem}
+.mark{display:inline-flex;align-items:center;justify-content:center;width:2.4rem;height:2.4rem;border:2.5px solid var(--ink);font-weight:700;font-size:1.4rem;transform:translateY(-.2rem)}
+.tempo{font-family:var(--serif);font-weight:700;font-style:italic;font-size:1rem;color:var(--muted)}
+/* each skill group: a part on a real staff */
+.system{display:grid;grid-template-columns:7.5rem 1fr;gap:0 .6rem;align-items:start;margin:1.6rem 0 .5rem}
+@media (max-width:40rem){.system{grid-template-columns:1fr}}
+.part{font-family:var(--serif);font-style:italic;text-align:right;margin:.9rem 0 0;font-size:.98rem}
+@media (max-width:40rem){.part{text-align:left;margin:0}}
+.staff{position:relative;padding-left:4.4rem;border-left:3px solid var(--ink)}
+.staff::before{content:"";position:absolute;left:0;right:0;top:12px;height:41px;background:repeating-linear-gradient(to bottom,var(--staff) 0 1px,transparent 1px 10px);pointer-events:none}
+.staff::after{content:"";position:absolute;right:0;top:12px;height:41px;border-right:4px double var(--ink)}
+.clef{position:absolute;left:.15rem;top:-6px;font-size:3.9rem;line-height:1;color:var(--ink);font-family:"Noto Music","Bravura","Apple Symbols","Segoe UI Symbol",serif}
+.time{position:absolute;left:2.6rem;top:12px;display:flex;flex-direction:column;font:700 1.3rem/20px var(--serif)}
+.notes{list-style:none;margin:0;padding:0 .6rem 0 0;display:flex;flex-wrap:wrap;row-gap:.4rem}
+.notes li{position:relative;width:7.6rem;height:96px;flex:none}
+.notes li:nth-child(4n){box-shadow:inset -1px 0 0 0 var(--ink)}
+.notes li::before{content:"";position:absolute;left:1.6rem;top:var(--y,29px);width:13px;height:9px;border-radius:50%;background:var(--ink);transform:rotate(-22deg)}
+.notes li::after{content:"";position:absolute;left:calc(1.6rem + 11.5px);top:calc(var(--y,29px) - 28px);width:1.5px;height:31px;background:var(--ink)}
+.notes li:nth-child(5n+1){--y:44px}.notes li:nth-child(5n+2){--y:34px}.notes li:nth-child(5n+3){--y:24px}.notes li:nth-child(5n+4){--y:39px}.notes li:nth-child(5n){--y:29px}
+.lyric{position:absolute;left:.4rem;right:.3rem;top:62px;font-family:var(--serif);font-style:italic;font-size:.9rem;line-height:1.2}
+/* staff lines continue across wrapped rows */
+.notes{background:repeating-linear-gradient(to bottom,transparent 0 12px,var(--staff) 12px 13px,transparent 13px 22px,var(--staff) 22px 23px,transparent 23px 32px,var(--staff) 32px 33px,transparent 33px 42px,var(--staff) 42px 43px,transparent 43px 52px,var(--staff) 52px 53px,transparent 53px 100px);background-size:100% 100px}
+.staff::before{display:none}
+/* repertoire, like a score's list of numbers */
+.repertoire{list-style:none;padding:0;margin:1rem 0 0}
+.repertoire li{display:grid;grid-template-columns:4.2rem 1fr auto auto;column-gap:.6rem;align-items:baseline;padding:.75rem 0;border-bottom:1px solid var(--line)}
+.repertoire .no{font-family:var(--serif);font-weight:700}
+.repertoire .t em{font-family:var(--serif);font-size:1.15rem}
+.repertoire .role{font-style:italic;color:var(--muted)}
+.repertoire .dots{border-bottom:1px dotted var(--field-border);min-width:1rem;transform:translateY(-.25rem)}
+.repertoire .yr{font-family:var(--serif)}
+.repertoire .by{grid-column:2 / -1;color:var(--muted);font-size:.92rem}
+@media (max-width:34rem){.repertoire li{grid-template-columns:3.4rem 1fr auto}.repertoire .dots{display:none}}
+/* plates */
+.gallery{columns:3 12rem;column-gap:1.2rem}
+.gallery img{filter:grayscale(.15);border:1px solid var(--ink);padding:5px;background:var(--paper)}
+.gallery figcaption{font-family:var(--serif);font-style:italic}
+.coda address{background:transparent;border:1px solid var(--ink);border-radius:0}
+.fine{text-align:right;font-family:var(--serif);font-weight:700;font-style:italic;font-size:1.4rem;margin-top:2rem}
+.fine::after{content:"";display:inline-block;width:2.2rem;height:1.6rem;margin-left:.6rem;vertical-align:middle;border-left:1px solid var(--ink);border-right:5px solid var(--ink)}
+.reel-title{font-variant:small-caps;font-weight:400}
+footer{max-width:64rem}
+@media (max-width:40rem){.staff{padding-left:3rem}.clef{font-size:3.2rem;top:-2px}.time{left:1.9rem;font-size:1.05rem}.notes li{width:4.9rem;height:100px}.notes li::before{left:1rem}.notes li::after{left:calc(1rem + 11.5px)}.lyric{font-size:.8rem;left:.1rem}}

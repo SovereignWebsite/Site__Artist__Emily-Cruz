@@ -1,38 +1,81 @@
-/* Design 1, Programme: a theatre programme. Cover, cast list, notes, about the company, back page. */
-:root{--bg:#f6f0e4;--surface:#fbf7ef;--fg:#231d17;--muted:#594e42;--accent:#8a2c1f;--on-accent:#fff;--line:#ddd2bf;--note:#efe5d2;--field-border:#8c7d69;--bar:#f6f0e4;--head:var(--serif);--back:#3a1410;--back-fg:#f6efe6}
-@media (prefers-color-scheme:dark){:root{--bg:#1b1713;--surface:#241f1a;--fg:#efe6d6;--muted:#c3b5a0;--accent:#e9a08c;--on-accent:#1b1713;--line:#3a322a;--note:#2a221c;--field-border:#857560;--bar:#1b1713;--back:#0f0b08;--back-fg:#efe6d6}}
-h1,h2{font-family:var(--serif);font-weight:700}
-h2{font-size:clamp(1.9rem,5vw,2.8rem);font-style:italic;font-weight:400}
-section{text-align:left}
-.kicker{font-family:var(--sans)}
-/* cover */
-.cover{padding-top:clamp(1rem,4vw,2.5rem);display:grid;gap:1.5rem}
-@media (min-width:52rem){.cover{grid-template-columns:3fr 2fr;align-items:end;gap:2.5rem}}
-.cover-art{position:relative;margin:0;border:10px solid var(--surface);outline:1px solid var(--line);background:#000}
-.cover-art img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%}
-.cover-title{position:absolute;left:0;right:0;bottom:0;padding:5rem 1.2rem 1.2rem;background:linear-gradient(to top,rgba(20,10,6,.92),rgba(20,10,6,.55) 55%,transparent);color:#fff}
-.cover-title .kicker{color:#ffd9c8}
-.cover-title .show{font-family:var(--serif);font-size:clamp(1.05rem,3vw,1.35rem);margin:0 0 .6rem;color:#fff3ea}
-.cover-title h1{font-size:clamp(3rem,12vw,6.2rem);line-height:.95;margin:0;color:#fff;letter-spacing:-.02em}
-.cover-title .sub{color:#f3e5da;margin:.4rem 0 0;font-family:var(--serif)}
-.cover-art figcaption{position:absolute;right:.6rem;top:.5rem;margin:0;color:#fff;font-size:.8rem;background:rgba(0,0,0,.55);padding:.1rem .45rem;border-radius:.2rem}
-.cover-foot .lead{font-family:var(--serif);font-size:clamp(1.2rem,2.6vw,1.45rem)}
-.btn{border-radius:.25rem}
-/* cast list with dotted leaders */
-.cast{list-style:none;padding:0;margin:1.5rem 0 0;max-width:52rem}
-.cast li{display:grid;grid-template-columns:auto 1fr auto;column-gap:.6rem;align-items:baseline;padding:.85rem 0;border-bottom:1px solid var(--line)}
-.cast .role{font-family:var(--serif);font-style:italic;font-size:1.15rem}
-.cast .dots{border-bottom:2px dotted var(--field-border);transform:translateY(-.3rem)}
-.cast .prod{font-family:var(--serif);text-align:right}
-.cast .by{grid-column:1 / -1;color:var(--muted);font-size:.95rem}
+/* Design 1, Programme: holding a West End programme. Full-bleed cover, a crimson band, the credits on an
+   oxblood page in gold, photo spreads between sections, programme notes on cream, the agent on the back cover. */
+:root{--bg:#f7efe1;--surface:#fffaf1;--fg:#24130f;--muted:#5d4a40;--accent:#8e1424;--on-accent:#fff;--line:#e3d4bd;--note:#f1e3cc;--field-border:#8c7766;--bar:#1a0508;
+  --head:var(--serif);--crimson:#8e1424;--oxblood:#22060b;--gold:#e9c877;--gold-soft:#d9b866;--cream:#f7efe1;--chooser-fg:#f7efe1;--chooser-border:#c9a85e}
+@media (prefers-color-scheme:dark){:root{--bg:#160c09;--surface:#22140f;--fg:#f3e7d6;--muted:#cdb9a5;--accent:#f0b3a0;--on-accent:#1a0b08;--line:#3b2820;--note:#2a1912;--field-border:#8a7461}}
+body{background:var(--bg)}
+.bar{background:var(--bar);border-bottom:1px solid #3d1219}
+.bar .brand{color:var(--gold);font-family:var(--serif);letter-spacing:.08em;text-transform:uppercase;font-size:.95rem}
+.bar nav a{color:#f3e4d0}
+.family{background:#12040a}.family a,.family .family-narrow summary{color:#d8c5b1}.family a:hover,.family a:focus-visible,.family .family-narrow summary:hover,.family .family-narrow summary:focus-visible{color:#fff}
+h1,h2,h3{font-family:var(--serif)}
+.kicker{font-family:var(--sans);letter-spacing:.22em;font-size:.8rem}
+section{border-bottom:0}
+/* cover: the photograph edge to edge, the name huge across it */
+.cover{position:relative;padding:0!important;min-height:min(92vh,58rem);display:grid;align-items:end;color:#fff;background:#111;overflow:hidden}
+.cover>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(26,4,8,.96) 0,rgba(26,4,8,.7) 32%,rgba(26,4,8,0) 62%),linear-gradient(to right,rgba(26,4,8,.45),transparent 55%)}
+.cover-text{position:relative;z-index:1;padding:0 max(16px,calc(50vw - 34rem)) clamp(2.5rem,7vw,5rem)}
+.cover .kicker{color:var(--gold);margin-bottom:.8rem}
+.cover .kicker em{font-family:var(--serif);font-size:1.2em;letter-spacing:.02em;text-transform:none}
+.cover h1{font-size:clamp(4.2rem,17vw,12.5rem);line-height:.82;margin:0;letter-spacing:-.035em;color:#fff;font-weight:700;text-shadow:0 6px 40px rgba(0,0,0,.45)}
+.cover h1 span{display:block;font-style:italic;font-weight:400;color:var(--gold);padding-left:.35em}
+.cover .sub{color:#f4e6d3;font-family:var(--serif);font-style:italic;font-size:clamp(1.1rem,2.6vw,1.6rem);margin:.8rem 0 0}
+.cover .photo-credit{position:absolute;z-index:1;right:max(16px,calc(50vw - 34rem));top:1rem;margin:0;color:#fff;background:rgba(0,0,0,.5);padding:.15rem .55rem;border-radius:.2rem}
+/* the crimson band */
+.band{background:var(--crimson);color:#fff;padding-block:clamp(1.8rem,5vw,3rem)!important;display:grid;gap:1rem;align-items:center}
+@media (min-width:56rem){.band{grid-template-columns:1.4fr 1fr}}
+.band .lead{font-family:var(--serif);font-size:clamp(1.3rem,3vw,1.9rem);line-height:1.35;margin:0}
+.band .lead em{color:var(--gold)}
+.band .btn.primary{background:var(--gold);color:#2a070c;border-color:var(--gold)}
+.band .links a{color:#fff}
+/* the cast page */
+.cast-page{background:var(--oxblood) radial-gradient(ellipse at 20% 0,#3d0d16,transparent 60%);color:#f4e7d3;padding-block:clamp(3rem,8vw,6rem)!important}
+.cast-page .kicker{color:var(--gold-soft);text-align:center}
+.cast-page h2{text-align:center;color:var(--gold);font-size:clamp(2.6rem,8vw,5rem);font-style:italic;font-weight:400;margin:0 0 .3rem}
+.cast-page h2::after{content:"";display:block;width:7rem;height:1px;margin:1.2rem auto 0;background:linear-gradient(to right,transparent,var(--gold),transparent)}
+.cast{list-style:none;padding:0;margin:2.5rem auto 0;max-width:62rem;columns:2 26rem;column-gap:4rem}
+.cast li{break-inside:avoid;display:grid;grid-template-columns:auto 1fr auto;column-gap:.6rem;align-items:baseline;padding:.9rem 0;border-bottom:1px solid rgba(233,200,119,.22)}
+.cast .role{font-family:var(--sans);text-transform:uppercase;letter-spacing:.12em;font-size:.82rem;font-weight:600;color:var(--gold);max-width:16ch}
+.cast .dots{border-bottom:1px dotted rgba(233,200,119,.6);transform:translateY(-.25rem)}
+.cast .prod{font-family:var(--serif);font-size:1.2rem;text-align:right;color:#fff}
+.cast .by{grid-column:1 / -1;color:#d5c2ad;font-size:.92rem;font-style:italic;font-family:var(--serif);margin-top:.15rem}
 @media (max-width:34rem){.cast li{grid-template-columns:1fr}.cast .dots{display:none}.cast .prod{text-align:left}}
-/* photographs */
-.gallery{columns:3 13rem}
-.gallery img{border:6px solid var(--surface);outline:1px solid var(--line);border-radius:0}
-/* about the company, back page */
-#company{max-width:var(--text)}
-.back{background:var(--back);color:var(--back-fg);margin:2rem calc(50% - 50vw) 0;padding-inline:max(16px,calc(50vw - 34rem));border:0}
-.back h2,.back .kicker{color:var(--back-fg)}
-.back a{color:#ffd3c2}
-.back address{background:transparent;border-color:#8a6a60;color:var(--back-fg)}
+/* photo spreads */
+.spread{display:grid;grid-template-columns:1fr;gap:4px;padding-inline:0!important;background:#000}
+@media (min-width:46rem){.spread{grid-template-columns:1fr 1.4fr 1fr}}
+.spread figure{position:relative;margin:0;overflow:hidden}
+.spread img{width:100%;height:100%;max-height:44rem;aspect-ratio:3/4;object-fit:cover}
+.spread figcaption,.mosaic figcaption{position:absolute;left:.6rem;bottom:.6rem;margin:0;color:#fff;background:rgba(0,0,0,.55);padding:.1rem .5rem;border-radius:.2rem}
+/* the screen */
+.screen{background:#0b0607;color:#f1e6d8;padding-block:clamp(3rem,8vw,6rem)!important}
+.screen h2{color:#fff;font-size:clamp(2.4rem,7vw,4.4rem);font-style:italic;font-weight:400}
+.screen .kicker{color:var(--gold)}
+.screen .note{background:#1d1012;color:#eadccb;border-left-color:var(--gold)}
+.screen .meta{color:#cdbba8}
+.screen .reel-title{font-family:var(--serif);font-style:italic;font-weight:400}
+/* plates */
+.plates h2{font-size:clamp(2.2rem,6vw,3.6rem);font-style:italic;font-weight:400}
+.mosaic{display:grid;gap:6px;grid-template-columns:repeat(2,1fr);padding-inline:max(6px,calc(50vw - 40rem))!important}
+@media (min-width:46rem){.mosaic{grid-template-columns:repeat(4,1fr)}.mosaic figure:nth-child(1),.mosaic figure:nth-child(5){grid-row:span 2}}
+.mosaic figure{position:relative;margin:0;overflow:hidden;background:#000}
+.mosaic img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
+/* programme notes */
+.notes h2{font-size:clamp(2.2rem,6vw,3.6rem);font-style:italic;font-weight:400}
+.note-cols{columns:3 15rem;column-gap:2.5rem;column-rule:1px solid var(--line)}
+.note-cols div{break-inside:avoid;margin-bottom:1.4rem}
+.note-cols h3{font-family:var(--sans);text-transform:uppercase;letter-spacing:.14em;font-size:.82rem;color:var(--accent);margin:0 0 .3rem}
+.note-cols p{font-family:var(--serif);font-size:1.08rem;margin:0}
+/* about the company */
+.company{background:var(--note);padding-block:clamp(3rem,7vw,5rem)!important;text-align:center}
+.company h2{font-size:clamp(1.9rem,5vw,3rem);max-width:22ch;margin-inline:auto}
+.company p{max-width:var(--text);margin-inline:auto}
+/* back cover */
+.back{background:var(--crimson);color:#fff;padding-block:clamp(3rem,8vw,6rem)!important}
+.back-frame{max-width:40rem;margin:0 auto;padding:clamp(1.5rem,5vw,3rem);border:1px solid var(--gold);outline:1px solid var(--gold);outline-offset:6px;text-align:center}
+.back h2{color:var(--gold);font-size:clamp(2.6rem,8vw,4.4rem);margin:.2rem 0 .6rem}
+.back .kicker{color:#f6dfa5}
+.back address{background:transparent;border:0;margin:1rem auto;color:#fff;text-align:center;padding:0}
+.back a{color:#fff3d6}
 footer{border-top:0}
+.btn{border-radius:.2rem}

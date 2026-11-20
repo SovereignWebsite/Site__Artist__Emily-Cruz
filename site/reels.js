@@ -6,10 +6,11 @@ document.querySelectorAll('.frame[data-src]').forEach(function (frame) {
     e.preventDefault();
     var f = document.createElement('iframe');
     f.src = frame.getAttribute('data-src');
-    f.title = frame.parentElement.querySelector('h3').textContent;
+    f.title = frame.getAttribute('data-title') || 'Showreel';
     f.allow = 'autoplay; fullscreen; picture-in-picture';
     f.allowFullscreen = true;
     f.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.classList.add('playing');
     frame.replaceChildren(f);
   });
 });

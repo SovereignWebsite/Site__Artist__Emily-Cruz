@@ -1,19 +1,35 @@
-/* Design 5, Brief: the plain casting brief, one printable page. Sage green, plain sans. */
-:root{--bg:#f4f5f1;--surface:#fbfcf9;--fg:#1c1d1a;--muted:#4f524b;--accent:#3f5c4a;--on-accent:#fff;--line:#dfe2da;--note:#e7ece4;--field-border:#7d867a;--bar:#f4f5f1}
-@media (prefers-color-scheme:dark){:root{--bg:#151714;--surface:#1c1f1b;--fg:#ecede8;--muted:#b0b4aa;--accent:#9cc0a8;--on-accent:#10140f;--line:#2e322c;--note:#1f2a22;--field-border:#6f7a6c;--bar:#151714}}
-main{max-width:58rem}
-h1{font-size:clamp(2.2rem,7vw,3.2rem)}
-h2{font-size:1.35rem;text-transform:uppercase;letter-spacing:.08em}
-section{padding:1.8rem 0}
-.brief-top{display:grid;gap:1.5rem;padding-top:1.5rem}
-@media (min-width:40rem){.brief-top{grid-template-columns:14rem 1fr;align-items:start}}
-.brief-top figure{max-width:16rem}
-.brief-top img{border-radius:.3rem}
-.brief-facts{margin-top:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,9.5rem),1fr))}
-.skill-lines div{display:grid;grid-template-columns:minmax(8rem,12rem) 1fr;gap:.2rem 1rem;padding:.45rem 0;border-bottom:1px solid var(--line)}
-.skill-lines dt{font-weight:600}.skill-lines dd{margin:0}
-@media (max-width:30rem){.skill-lines div{grid-template-columns:1fr}}
-.credits td,.credits th{padding:.45rem .5rem}
+/* Design 5, Brief: a casting brief for a casting director in a hurry. A split card, the headshot full height,
+   the essentials on a deep green panel, then a tight credits table. Prints on one page. */
+:root{--bg:#f3f4ef;--surface:#fff;--fg:#17201b;--muted:#4a544d;--accent:#1f4a36;--on-accent:#fff;--line:#dde2da;--note:#e7ede6;--field-border:#77837a;--bar:#f3f4ef;--panel:#163428;--panel-fg:#eef4ee;--mint:#a9e3c2}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1311;--surface:#171d1a;--fg:#e9eee9;--muted:#b0bab2;--accent:#a9e3c2;--on-accent:#0f1311;--line:#29312c;--note:#1b2420;--field-border:#6c7a70;--bar:#0f1311;--panel:#0b1f16}}
+main{max-width:68rem}
+section{padding:clamp(1.6rem,4vw,2.6rem) 0}
+h2{font-size:.95rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:.5rem}
+.card{display:grid;padding:0!important;background:var(--panel);color:var(--panel-fg);border:0}
+@media (min-width:46rem){.card{grid-template-columns:minmax(0,5fr) minmax(0,7fr);min-height:min(88vh,52rem)}}
+.card-photo{margin:0;position:relative;background:#000}
+.card-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;max-height:88vh}
+@media (max-width:45.99rem){.card-photo img{max-height:46vh}}
+.card-photo figcaption{position:absolute;left:.6rem;bottom:.6rem;margin:0;background:rgba(0,0,0,.6);color:#fff;padding:.1rem .5rem;border-radius:.2rem}
+.card-body{padding:clamp(1.5rem,5vw,4rem) max(16px,calc(50vw - 34rem)) clamp(1.5rem,5vw,4rem) clamp(1.2rem,4vw,3.5rem);align-self:center}
+@media (max-width:45.99rem){.card{display:flex;flex-direction:column-reverse}.card-body{padding:1.2rem 16px}}
+.card .kicker{color:var(--mint);letter-spacing:.2em}
+.card h1{font-size:clamp(3rem,10vw,6.4rem);line-height:.9;margin:.4rem 0 .4rem;letter-spacing:-.03em;color:#fff}
+.card .sub{color:#cfe0d4;font-size:1.1rem}
+.card .lead{color:#fff;font-size:1.12rem}
+.card .lead em{color:var(--mint)}
+.card-facts{border-top:1px solid rgba(169,227,194,.3);padding-top:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,9.5rem),1fr))}
+.card-facts dt{color:var(--mint)}
+.card-facts dd{color:#fff}
+.card a{color:var(--mint)}
+.card .btn.primary{background:var(--mint);color:#0b1f16;border-color:var(--mint)}
+.credits{font-size:.97rem}
+.credits td,.credits th{padding:.5rem .5rem}
+.credits td:first-child{font-weight:700;color:var(--accent)}
 .role{font-style:italic}
-.gallery{columns:3 11rem}
-@media (max-width:39.99rem){.brief-top{grid-template-columns:6.5rem 1fr;gap:1rem;align-items:start}.brief-top>div{display:contents}.brief-top h1{grid-column:2;grid-row:1;margin:0;align-self:center;font-size:2.2rem}.brief-top figure{grid-column:1;grid-row:1 / span 2}.brief-top .sub{grid-column:2;grid-row:2;margin:0}.brief-top>div>:not(h1):not(.sub){grid-column:1 / -1}.brief-top figcaption{font-size:.8rem}}
+.skill-lines div{display:grid;grid-template-columns:minmax(8rem,13rem) 1fr;gap:.2rem 1rem;padding:.5rem 0;border-bottom:1px solid var(--line)}
+.skill-lines dt{font-weight:700}.skill-lines dd{margin:0}
+@media (max-width:30rem){.skill-lines div{grid-template-columns:1fr}}
+.agent address{border-left:4px solid var(--accent);border-radius:0}
+.gallery{columns:4 11rem}
+@media print{.card{background:#fff;color:#000;min-height:0;grid-template-columns:5cm 1fr}.card *{color:#000!important}.card-photo img{max-height:7cm}}
