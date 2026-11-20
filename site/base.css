@@ -190,3 +190,13 @@ pre{overflow-x:auto;max-width:100%}
 .bar .family-credit ul a{color:var(--fg)}
 .bar .family-credit ul a:hover,.bar .family-credit ul a:focus-visible{color:var(--accent-text,var(--accent))}
 @media (max-width:40rem){.bar .family-credit{order:2}}
+/* "Choose a design" and the Sovereign Website credit share one row at the far right, on every width (design.b) */
+.bar-right{display:flex;align-items:center;gap:.4rem;margin-left:auto;flex:none;order:5}
+.bar-right .chooser,.bar .bar-right .family-credit{order:0;margin:0}
+@media (max-width:40rem){.bar-right{order:1}.bar .brand{order:0}.bar nav{order:3}.head-links{order:4}}
+.head-links{order:6;flex-basis:100%;justify-content:flex-end}
+@media (max-width:40rem){.head-links{justify-content:flex-start}
+  .bar .family-credit summary{font-size:0;gap:0;padding:.3rem .45rem;min-width:32px;min-height:32px;justify-content:center;border:1.5px solid var(--chooser-border,var(--field-border));border-radius:999px}
+  .bar .family-credit summary::before{content:"SW";font-size:.72rem;font-weight:700;letter-spacing:.04em}
+  .bar .family-credit summary::after{display:none}
+  .bar .family-credit ul{font-size:.9rem}}

@@ -478,7 +478,7 @@ def plain(path, title, h1, body, desc=DESC):
 <header class="bar">
   <a class="brand" href="{pre}index.html">Emily Cruz</a>
   <nav aria-label="Site"><a href="{pre}start/">Start here</a><a href="{pre}agents/">Use with your AI</a><a href="{pre}admin/">How it was made</a></nav>
-  {FAMILY}
+  <div class="bar-right">{FAMILY}</div>
 </header>
 <main id="main" tabindex="-1" class="doc">
 <section>
@@ -628,8 +628,8 @@ def page(n, pre, switcher):
   <a class="brand" href="{"#top" if on_home else "../index.html"}">Emily Cruz</a>
   <nav aria-label="Sections">{nav}</nav>
   {header_links(pre)}
-  {chooser}
-  {FAMILY}
+  <div class="bar-right">{chooser}
+  {FAMILY}</div>
 </header>
 <main id="main" tabindex="-1">
 {BODIES[n](pre)}
@@ -660,7 +660,7 @@ def designs_index():
 <body class="designs-page">
 <a class="skip" href="#main">Skip to content</a>
 <header class="bar"><a class="brand" href="../index.html">Emily Cruz</a>
-  {FAMILY}
+  <div class="bar-right">{FAMILY}</div>
 </header>
 <main id="main" tabindex="-1">
 <section>
