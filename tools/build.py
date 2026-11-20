@@ -89,10 +89,10 @@ FAMILY_LINKS = """    <li><a href="https://sovereignwebsite.ai/">Sovereign Websi
     <li><a href="https://newsroom.sgit.ai/">Newsroom</a></li>"""  # from SovereignWebsite__Factory seed/shared/family-bar.html
 # Full bar on wide screens; on phones it folds into one line (design.b, 20 November 2026). No script.
 FAMILY = f"""<nav class="family" aria-label="The Sovereign Website family">
-  <ul class="family-full">
+  <ul class="family-wide">
 {FAMILY_LINKS}
   </ul>
-  <details class="family-fold"><summary>Sovereign Website family</summary><ul>
+  <details class="family-narrow"><summary>Sovereign Website family</summary><ul>
 {FAMILY_LINKS}
   </ul></details>
 </nav>"""  # from SovereignWebsite__Factory seed/shared/family-bar.html

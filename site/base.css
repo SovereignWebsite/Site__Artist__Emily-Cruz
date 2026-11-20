@@ -100,7 +100,8 @@ footer p{max-width:var(--text)}
 /* Choose a design: one compact line on phones */
 @media (max-width:30rem){.switcher{display:flex;align-items:center;gap:.6rem;padding:.4rem 16px}.switcher p{margin:0;white-space:nowrap}.switcher ul{margin:0}}
 /* Family bar folds to one line on phones */
-.family-fold{display:none}
-.family-fold summary{cursor:pointer;min-height:24px;padding:.2rem 16px;color:var(--muted);max-width:var(--max);margin:0 auto}
-.family-fold summary:hover,.family-fold summary:focus-visible{color:var(--fg)}
-@media (max-width:40rem){.family-full{display:none!important}.family-fold{display:block}}
+.family-narrow{display:none}
+.family-narrow summary{cursor:pointer;min-height:24px;padding:.2rem 16px;color:var(--muted);max-width:var(--max);margin:0 auto}
+.family-narrow summary:hover,.family-narrow summary:focus-visible{color:var(--fg)}
+@media (max-width:40rem){.family-wide{display:none!important}.family-narrow{display:block}}
+@media (max-width:40rem){.family .family-narrow ul{flex-direction:column;gap:0;padding:0 16px .4rem}}
