@@ -88,3 +88,12 @@ footer p{max-width:var(--text)}
 .family a:hover,.family a:focus-visible{color:var(--fg);text-decoration:underline}
 .family .family-sep{margin-left:auto}
 @media (max-width:40rem){.family .family-sep{margin-left:0}}
+/* Reel posters: a real frame from each reel, credited in the meta line. */
+.play img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0}
+.play::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65),rgba(0,0,0,.05) 60%)}
+.play .icon,.play .label{position:relative;z-index:1}
+.play .label{font-weight:600;text-shadow:0 1px 3px #000}
+.kicker{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-text,var(--accent));font-weight:600;margin:0 0 .3rem}
+.links a{color:var(--link,var(--accent))}
+.sub{color:var(--muted)}
+@media print{.family,.switcher,.bar,.no-print,footer,.btn{display:none!important}body{background:#fff;color:#000}section{padding:1rem 0;break-inside:avoid}a{color:#000}}

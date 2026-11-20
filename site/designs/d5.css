@@ -1,15 +1,19 @@
-/* Design 5, Score: the page read as a piece of music, in numbered bars, on stave lines. */
-:root{--bg:#fbf8f3;--surface:#fff;--fg:#1f1a16;--muted:#5a5048;--accent:#9e3f24;--on-accent:#fff;--line:#e4dcd1;--note:#f3e9df;--field-border:#8a7d71;--bar:#fbf8f3;--head:var(--serif);--stave:#c9bcae}
-@media (prefers-color-scheme:dark){:root{--bg:#16120f;--surface:#1f1915;--fg:#f1e9e0;--muted:#c2b6aa;--accent:#f0a07f;--on-accent:#16120f;--line:#3a302a;--note:#271e19;--field-border:#86776a;--bar:#16120f;--stave:#3f352e}}
-main{counter-reset:bar}
-section{border-bottom:0;position:relative}
-section h2{counter-increment:bar;display:flex;align-items:baseline;gap:.8rem}
-section h2::before{content:counter(bar);font:600 .9rem ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--on-accent);background:var(--accent);min-width:2rem;height:2rem;display:inline-flex;align-items:center;justify-content:center;border-radius:.2rem}
-section:not(.hero)::before{content:"";display:block;height:2.6rem;margin-bottom:1.5rem;background:repeating-linear-gradient(to bottom,var(--stave) 0 1px,transparent 1px 10px);border-left:3px solid var(--fg);border-right:1px solid var(--fg)}
-.hero{background:repeating-linear-gradient(to bottom,transparent 0 47px,var(--stave) 47px 48px);padding-top:clamp(2.5rem,8vw,5rem)}
-.hero h1{font-style:italic;font-size:clamp(3rem,10vw,5.4rem)}
-.hero-photo img{border-radius:999px 999px .4rem .4rem}
-.eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em}
-.hero-text{background:var(--bg);padding:.5rem 0}
-.tags li{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9rem}
-.btn{border-radius:.3rem}
+/* Design 5, Brief: the plain casting brief, one printable page. Sage green, plain sans. */
+:root{--bg:#f4f5f1;--surface:#fbfcf9;--fg:#1c1d1a;--muted:#4f524b;--accent:#3f5c4a;--on-accent:#fff;--line:#dfe2da;--note:#e7ece4;--field-border:#7d867a;--bar:#f4f5f1}
+@media (prefers-color-scheme:dark){:root{--bg:#151714;--surface:#1c1f1b;--fg:#ecede8;--muted:#b0b4aa;--accent:#9cc0a8;--on-accent:#10140f;--line:#2e322c;--note:#1f2a22;--field-border:#6f7a6c;--bar:#151714}}
+main{max-width:58rem}
+h1{font-size:clamp(2.2rem,7vw,3.2rem)}
+h2{font-size:1.35rem;text-transform:uppercase;letter-spacing:.08em}
+section{padding:1.8rem 0}
+.brief-top{display:grid;gap:1.5rem;padding-top:1.5rem}
+@media (min-width:40rem){.brief-top{grid-template-columns:14rem 1fr;align-items:start}}
+.brief-top figure{max-width:16rem}
+.brief-top img{border-radius:.3rem}
+.brief-facts{margin-top:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,9.5rem),1fr))}
+.skill-lines div{display:grid;grid-template-columns:minmax(8rem,12rem) 1fr;gap:.2rem 1rem;padding:.45rem 0;border-bottom:1px solid var(--line)}
+.skill-lines dt{font-weight:600}.skill-lines dd{margin:0}
+@media (max-width:30rem){.skill-lines div{grid-template-columns:1fr}}
+.credits td,.credits th{padding:.45rem .5rem}
+.role{font-style:italic}
+.gallery{columns:3 11rem}
+@media (max-width:39.99rem){.brief-top{grid-template-columns:6.5rem 1fr;gap:1rem;align-items:start}.brief-top>div{display:contents}.brief-top h1{grid-column:2;grid-row:1;margin:0;align-self:center;font-size:2.2rem}.brief-top figure{grid-column:1;grid-row:1 / span 2}.brief-top .sub{grid-column:2;grid-row:2;margin:0}.brief-top>div>:not(h1):not(.sub){grid-column:1 / -1}.brief-top figcaption{font-size:.8rem}}

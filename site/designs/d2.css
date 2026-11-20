@@ -1,25 +1,31 @@
-/* Design 2, Programme: editorial. Set like a theatre programme: cream paper, serif, credits first. */
-:root{--bg:#f6f0e4;--surface:#fbf7ef;--fg:#231d17;--muted:#594e42;--accent:#8a2c1f;--on-accent:#fff;--line:#ddd2bf;--note:#efe5d2;--field-border:#8c7d69;--bar:#f6f0e4;--head:var(--serif)}
-@media (prefers-color-scheme:dark){:root{--bg:#1b1713;--surface:#241f1a;--fg:#efe6d6;--muted:#c3b5a0;--accent:#e9a08c;--on-accent:#1b1713;--line:#3a322a;--note:#2a221c;--field-border:#857560;--bar:#1b1713}}
-h1,h2{font-weight:700}
-h2{text-align:center;font-style:italic;font-weight:400}
-h2::after{content:"";display:block;width:3rem;border-top:2px solid var(--accent);margin:.8rem auto 0}
-.hero{grid-template-columns:1fr!important;text-align:center;justify-items:center;padding-top:clamp(2.5rem,8vw,5rem)}
-.hero-photo{max-width:20rem}
-.hero-photo img{border-radius:50% 50% var(--radius) var(--radius)}
-.hero h1{font-size:clamp(3rem,11vw,5.6rem)}
-.hero-text{max-width:var(--text)}
-.actions{justify-content:center}
-.btn{border-radius:.25rem}
-#credits table{max-width:var(--text);margin:0 auto}
-#credits thead{position:absolute;left:-999px}
-#credits tr{display:grid;grid-template-columns:3.5rem 1fr;gap:.1rem 1rem;padding:1rem 0;border-bottom:1px dotted var(--field-border)}
-#credits td{display:block;border:0;padding:0}
-#credits td:nth-child(1){grid-row:span 4;font-family:var(--serif);font-size:1.25rem;color:var(--accent)}
-#credits td:nth-child(2){font-family:var(--serif);font-size:1.2rem}
-#credits td:nth-child(3){font-weight:600}
-#credits td:nth-child(4)::before{content:"Directed by ";color:var(--muted)}
-#credits td:nth-child(5){color:var(--muted)}
-#credits h3,#credits h3+p{text-align:center}
-.note{margin-inline:auto}
-.tags li{border-radius:.2rem}
+/* Design 2, Blue light: the showcase stage. Dark first, a portrait lit out of the dark, the reels as the main act. */
+:root{--bg:#eef0fa;--surface:#fff;--fg:#141a33;--muted:#454d6b;--accent:#22349b;--on-accent:#fff;--line:#d5d9ee;--note:#e2e6f7;--field-border:#6c7397;--bar:#060a22;--amber:#ffc861;--head:Impact,"Arial Narrow Bold","Helvetica Neue","Roboto Condensed",sans-serif}
+@media (prefers-color-scheme:dark){:root{--bg:#080c26;--surface:#10173f;--fg:#eef0ff;--muted:#b4bbe0;--accent:#ffc861;--on-accent:#080c26;--line:#1f2860;--note:#121a4c;--field-border:#7079ad;--bar:#03051a}}
+.bar{border-bottom-color:#1c2563}.bar .brand,.bar nav a{color:#fff}
+h1,h2{font-family:var(--head);font-weight:800;font-stretch:condensed;text-transform:uppercase;letter-spacing:.01em}
+h2{font-size:clamp(2rem,6vw,3.4rem)}
+.stage{overflow:hidden;margin:0 calc(50% - 50vw);padding:clamp(2rem,6vw,4.5rem) max(16px,calc(50vw - 34rem));background:#03051a;color:#e9ecff;display:grid;gap:2rem;align-items:center;border:0}
+@media (min-width:46rem){.stage{grid-template-columns:2fr 3fr}}
+.spot{position:relative}
+.spot::before{content:"";position:absolute;inset:-15% -20%;background:radial-gradient(ellipse at 50% 35%,rgba(70,110,255,.55),rgba(30,50,160,.25) 40%,transparent 68%);pointer-events:none}
+.spot figure{position:relative}
+.spot img{border-radius:50% 50% .4rem .4rem;-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 55%,transparent 78%);mask-image:radial-gradient(ellipse at 50% 40%,#000 55%,transparent 78%)}
+.spot figcaption{color:#c9cff2;text-align:center}
+.billing h1{color:var(--amber);font-size:clamp(3.6rem,15vw,8rem);line-height:.88;margin:.2rem 0 .8rem}
+.billing .kicker{color:#c9d1ff}
+.billing .lead{font-size:1.25rem;color:#fff}
+.billing .lead em{color:var(--amber)}
+.stage .btn.primary{background:var(--amber);color:#060a22;border-color:var(--amber)}
+.stage .links a{color:var(--amber)}
+.main-act{margin:0 calc(50% - 50vw);padding-inline:max(16px,calc(50vw - 34rem));background:#0b1238;color:#eef0ff;border:0}
+.main-act h2,.main-act .kicker{color:var(--amber)}
+.main-act .note{background:#131c52;color:#e6e9ff}
+.main-act .reel .meta{color:#c2c8ee}
+.acts{display:grid;gap:2rem}
+@media (min-width:60rem){.acts{grid-template-columns:3fr 2fr;align-items:start}}
+.acts .frame{border-radius:0;box-shadow:0 0 0 1px #2a3684,0 20px 60px rgba(0,0,0,.6)}
+.acts h3{font-family:var(--head);text-transform:uppercase;font-size:1.5rem;font-stretch:condensed;color:#fff}
+.gallery{columns:3 12rem}
+.gallery img{border-radius:0}
+.role{font-style:italic}
+@media (max-width:45.99rem){.stage{gap:.5rem;padding-top:1.2rem}.spot{max-width:13rem;margin:0 auto}.billing h1{font-size:clamp(3rem,16vw,4.4rem)}}

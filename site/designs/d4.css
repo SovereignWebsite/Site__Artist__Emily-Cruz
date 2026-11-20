@@ -1,17 +1,30 @@
-/* Design 4, Contact sheet: gallery-led. The photographs lead in a tight grid; words come after. */
-:root{--bg:#fafafa;--surface:#fff;--fg:#151515;--muted:#4d4d4d;--accent:#b3261e;--on-accent:#fff;--line:#e2e2e2;--note:#f2eceb;--field-border:#7a7a7a;--bar:#fafafa;--radius:0}
-@media (prefers-color-scheme:dark){:root{--bg:#111;--surface:#1a1a1a;--fg:#efefef;--muted:#b5b5b5;--accent:#ff8a7f;--on-accent:#111;--line:#2c2c2c;--note:#231918;--field-border:#777;--bar:#111}}
-main{max-width:80rem}
-.hero{grid-template-columns:1fr!important;padding:clamp(1.5rem,4vw,2.5rem) 0}
-.hero-photo{display:none}
-.hero h1{font-size:clamp(2.6rem,8vw,4rem);text-transform:uppercase;letter-spacing:.06em}
-.hero-text{display:grid;gap:0 2rem}
-@media (min-width:56rem){.hero-text{grid-template-columns:1fr 1fr}.hero-text .eyebrow,.hero-text h1,.hero-text .pronouns{grid-column:1 / -1}.actions{grid-column:1 / -1}}
-#gallery{padding-top:0}
-#gallery h2{position:absolute;left:-999px}
-.gallery,.gallery.stills{columns:auto;display:grid;gap:6px;grid-template-columns:repeat(auto-fill,minmax(min(100%,15rem),1fr))}
-.gallery figure{margin:0;position:relative;background:#000}
-.gallery img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.gallery figcaption{margin:0;padding:.35rem .5rem;background:var(--surface);color:var(--muted);font-size:.875rem}
-#gallery h3{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.btn{border-radius:0}
+/* Design 4, Score: the instrumental reel as the overture, movements for sections, skills on staves. */
+:root{--bg:#fbf8f3;--surface:#fff;--fg:#1f1a16;--muted:#5a5048;--accent:#9e3f24;--on-accent:#fff;--line:#e4dcd1;--note:#f3e9df;--field-border:#8a7d71;--bar:#fbf8f3;--head:var(--serif);--stave:#9b8d80}
+@media (prefers-color-scheme:dark){:root{--bg:#16120f;--surface:#1f1915;--fg:#f1e9e0;--muted:#c2b6aa;--accent:#f0a07f;--on-accent:#16120f;--line:#3a302a;--note:#271e19;--field-border:#86776a;--bar:#16120f;--stave:#6a5d52}}
+h1,h2,h3{font-family:var(--serif)}
+.title-page{display:grid;gap:2rem;align-items:center;text-align:center;padding-top:clamp(2rem,7vw,5rem)}
+@media (min-width:52rem){.title-page{grid-template-columns:3fr 2fr;text-align:left}}
+.title-page h1{font-size:clamp(3.2rem,11vw,6rem);font-weight:400;letter-spacing:.02em;margin:.2rem 0}
+.title-page .for{font-family:var(--serif);font-size:1.2rem;color:var(--muted)}
+.title-portrait img{border-radius:.3rem;outline:1px solid var(--stave);outline-offset:8px}
+.title-portrait{max-width:22rem;margin:0 auto}
+.movement h2{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .8rem;font-weight:400;font-size:clamp(1.8rem,5vw,2.6rem)}
+.mv{color:var(--accent);font-weight:700}
+.tempo{font-family:var(--sans);font-size:.95rem;font-style:italic;color:var(--muted)}
+.movement{border-bottom:0;position:relative}
+.movement::before{content:"";display:block;height:41px;margin-bottom:1.2rem;background:repeating-linear-gradient(to bottom,var(--stave) 0 1px,transparent 1px 10px);border-left:4px double var(--fg);border-right:1px solid var(--fg)}
+/* skills on staves: five lines, each skill a note set on a line or space */
+.stave-row{margin:0 0 1.6rem}
+.stave-row h3{margin:0 0 .3rem;font-style:italic;font-weight:400}
+.stave{list-style:none;margin:0;padding:12px .5rem;display:flex;flex-wrap:wrap;gap:12px 1.1rem;align-items:flex-start;background:repeating-linear-gradient(to bottom,var(--stave) 0 1px,transparent 1px 12px);background-size:100% 60px;border-left:2px solid var(--fg)}
+.stave li{position:relative;padding:.05rem .5rem .05rem 1.35rem;background:var(--bg);border-radius:.2rem;font-size:.95rem;line-height:1.5}
+.stave li::before{content:"";position:absolute;left:.2rem;top:50%;width:.8rem;height:.6rem;margin-top:-.3rem;border-radius:50%;background:var(--fg);transform:rotate(-20deg)}
+.stave li:nth-child(3n+2){margin-top:12px}.stave li:nth-child(3n){margin-top:24px}
+.repertoire{list-style:none;padding:0;margin:0}
+.repertoire li{display:grid;grid-template-columns:2.6rem 1fr;column-gap:.8rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.repertoire .bar-no{grid-row:span 3;font:600 .85rem ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--on-accent);background:var(--accent);height:1.9rem;display:flex;align-items:center;justify-content:center;border-radius:.2rem}
+.repertoire em{font-family:var(--serif);font-size:1.15rem}
+.repertoire .role{font-style:italic;color:var(--accent-text,var(--fg))}
+.repertoire .by{color:var(--muted);font-size:.95rem}
+.training{margin-top:1rem}
+.btn{border-radius:.3rem}

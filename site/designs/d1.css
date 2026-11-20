@@ -1,4 +1,38 @@
-/* Design 1, Sage: quiet. Sage green, plain sans, photo and words side by side. */
-:root{--bg:#f4f5f1;--surface:#fbfcf9;--fg:#1c1d1a;--muted:#4f524b;--accent:#3f5c4a;--on-accent:#fff;--line:#dfe2da;--note:#e7ece4;--field-border:#7d867a;--bar:#f4f5f1}
-@media (prefers-color-scheme:dark){:root{--bg:#151714;--surface:#1c1f1b;--fg:#ecede8;--muted:#b0b4aa;--accent:#9cc0a8;--on-accent:#10140f;--line:#2e322c;--note:#1f2a22;--field-border:#6f7a6c;--bar:#151714}}
-.hero{padding-top:clamp(2rem,6vw,4rem)}
+/* Design 1, Programme: a theatre programme. Cover, cast list, notes, about the company, back page. */
+:root{--bg:#f6f0e4;--surface:#fbf7ef;--fg:#231d17;--muted:#594e42;--accent:#8a2c1f;--on-accent:#fff;--line:#ddd2bf;--note:#efe5d2;--field-border:#8c7d69;--bar:#f6f0e4;--head:var(--serif);--back:#3a1410;--back-fg:#f6efe6}
+@media (prefers-color-scheme:dark){:root{--bg:#1b1713;--surface:#241f1a;--fg:#efe6d6;--muted:#c3b5a0;--accent:#e9a08c;--on-accent:#1b1713;--line:#3a322a;--note:#2a221c;--field-border:#857560;--bar:#1b1713;--back:#0f0b08;--back-fg:#efe6d6}}
+h1,h2{font-family:var(--serif);font-weight:700}
+h2{font-size:clamp(1.9rem,5vw,2.8rem);font-style:italic;font-weight:400}
+section{text-align:left}
+.kicker{font-family:var(--sans)}
+/* cover */
+.cover{padding-top:clamp(1rem,4vw,2.5rem);display:grid;gap:1.5rem}
+@media (min-width:52rem){.cover{grid-template-columns:3fr 2fr;align-items:end;gap:2.5rem}}
+.cover-art{position:relative;margin:0;border:10px solid var(--surface);outline:1px solid var(--line);background:#000}
+.cover-art img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%}
+.cover-title{position:absolute;left:0;right:0;bottom:0;padding:5rem 1.2rem 1.2rem;background:linear-gradient(to top,rgba(20,10,6,.92),rgba(20,10,6,.55) 55%,transparent);color:#fff}
+.cover-title .kicker{color:#ffd9c8}
+.cover-title .show{font-family:var(--serif);font-size:clamp(1.05rem,3vw,1.35rem);margin:0 0 .6rem;color:#fff3ea}
+.cover-title h1{font-size:clamp(3rem,12vw,6.2rem);line-height:.95;margin:0;color:#fff;letter-spacing:-.02em}
+.cover-title .sub{color:#f3e5da;margin:.4rem 0 0;font-family:var(--serif)}
+.cover-art figcaption{position:absolute;right:.6rem;top:.5rem;margin:0;color:#fff;font-size:.8rem;background:rgba(0,0,0,.55);padding:.1rem .45rem;border-radius:.2rem}
+.cover-foot .lead{font-family:var(--serif);font-size:clamp(1.2rem,2.6vw,1.45rem)}
+.btn{border-radius:.25rem}
+/* cast list with dotted leaders */
+.cast{list-style:none;padding:0;margin:1.5rem 0 0;max-width:52rem}
+.cast li{display:grid;grid-template-columns:auto 1fr auto;column-gap:.6rem;align-items:baseline;padding:.85rem 0;border-bottom:1px solid var(--line)}
+.cast .role{font-family:var(--serif);font-style:italic;font-size:1.15rem}
+.cast .dots{border-bottom:2px dotted var(--field-border);transform:translateY(-.3rem)}
+.cast .prod{font-family:var(--serif);text-align:right}
+.cast .by{grid-column:1 / -1;color:var(--muted);font-size:.95rem}
+@media (max-width:34rem){.cast li{grid-template-columns:1fr}.cast .dots{display:none}.cast .prod{text-align:left}}
+/* photographs */
+.gallery{columns:3 13rem}
+.gallery img{border:6px solid var(--surface);outline:1px solid var(--line);border-radius:0}
+/* about the company, back page */
+#company{max-width:var(--text)}
+.back{background:var(--back);color:var(--back-fg);margin:2rem calc(50% - 50vw) 0;padding-inline:max(16px,calc(50vw - 34rem));border:0}
+.back h2,.back .kicker{color:var(--back-fg)}
+.back a{color:#ffd3c2}
+.back address{background:transparent;border-color:#8a6a60;color:var(--back-fg)}
+footer{border-top:0}

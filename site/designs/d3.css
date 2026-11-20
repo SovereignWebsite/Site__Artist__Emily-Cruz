@@ -1,15 +1,22 @@
-/* Design 3, Blue light: bold. The deep blue of her showcase stage, amber type, showreels up front. */
-:root{--bg:#f3f4fa;--surface:#fff;--fg:#141a33;--muted:#454d6b;--accent:#22349b;--on-accent:#fff;--line:#d9dcec;--note:#e6e9f7;--field-border:#6c7397;--bar:#0e1747;--field:#0e1747;--amber:#ffc861}
-@media (prefers-color-scheme:dark){:root{--bg:#0a0f2e;--surface:#121a45;--fg:#eef0ff;--muted:#b4bbe0;--accent:#ffc861;--on-accent:#0a0f2e;--line:#232c63;--note:#141d50;--field-border:#7079ad;--bar:#060a22;--field:#060a22}}
-.bar{border-bottom-color:#2a3577}
-.bar .brand,.bar nav a{color:#fff}
-.hero{margin:0 calc(50% - 50vw);padding:clamp(2.5rem,8vw,5rem) max(16px,calc(50vw - 34rem));background:var(--field) radial-gradient(ellipse at 70% 30%,#2b49c9 0,transparent 60%);color:#fff;border:0}
-.hero h1{color:var(--amber);font-size:clamp(3.2rem,12vw,6.5rem);font-weight:800;letter-spacing:-.03em}
-.hero .eyebrow,.hero .pronouns{color:#dfe4ff}
-.hero .btn{color:#fff;border-color:var(--amber)}
-.hero .btn.primary{background:var(--amber);color:#0e1747}
-.hero a{color:var(--amber)}
-.hero figcaption{color:#cdd3f5;margin-top:1.3rem}
-.hero-photo img{border-radius:0;box-shadow:12px 12px 0 var(--amber)}
-.play{--play-bg:radial-gradient(circle at center,#2b49c9,#0e1747)}
-h2{text-transform:uppercase;letter-spacing:.04em;font-weight:800}
+/* Design 3, Contact sheet: a photographer's proof sheet. Numbered frames on film, each credit as its label; words after. */
+:root{--bg:#f4f2ee;--surface:#fff;--fg:#151515;--muted:#4d4d4d;--accent:#b3261e;--on-accent:#fff;--line:#dedad3;--note:#f3e7e5;--field-border:#7a7a7a;--bar:#f4f2ee;--radius:0;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+@media (prefers-color-scheme:dark){:root{--bg:#121212;--surface:#1b1b1b;--fg:#efefef;--muted:#b5b5b5;--accent:#ff8a7f;--on-accent:#111;--line:#2c2c2c;--note:#251a19;--field-border:#777;--bar:#121212}}
+main{max-width:84rem}
+h1,h2{font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+h2{font-size:clamp(1.2rem,3vw,1.6rem)}
+.sheet{padding-top:1.5rem}
+.sheet-head{display:flex;flex-wrap:wrap;gap:.3rem 1.5rem;align-items:baseline;margin-bottom:1rem}
+.sheet-head h1{font-size:clamp(1.8rem,6vw,3rem);margin:0}
+.sheet-head p{font-family:var(--mono);font-size:.9rem;color:var(--muted);margin:0}
+.strip{list-style:none;margin:0;padding:22px 10px;display:grid;gap:22px 8px;grid-template-columns:repeat(auto-fill,minmax(min(46%,12.5rem),1fr));background:#141210;
+  background-image:repeating-linear-gradient(to right,#141210 0 10px,#e9e4d8 10px 22px,#141210 22px 34px);background-size:34px 10px;background-repeat:repeat-x;background-position:0 6px}
+.frame-cell{background:#141210;padding:0 0 .2rem}
+.frame-cell a{display:block;outline-offset:-3px}
+.frame-cell img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.frame-cell .label{font-family:var(--mono);font-size:.82rem;color:#e9e4d8;margin:.35rem .1rem 0;line-height:1.35}
+.frame-cell .no{color:#ffb14a;font-weight:700;margin-right:.3rem}
+.strip{box-shadow:0 2px 0 #000}
+.note{font-family:var(--mono);font-size:.9rem}
+.btn{border-radius:0;font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em}
+.tags li{border-radius:0;font-family:var(--mono);font-size:.88rem}
+.role{font-style:italic}
