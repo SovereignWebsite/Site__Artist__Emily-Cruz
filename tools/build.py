@@ -87,15 +87,17 @@ FAMILY_LINKS = """    <li><a href="https://sovereignwebsite.ai/">Sovereign Websi
     <li class="family-sep"><a href="https://agenticcells.ai/">AgentiCCells</a></li>
     <li><a href="https://riskmandate.ai/">RiskMandate</a></li>
     <li><a href="https://newsroom.sgit.ai/">Newsroom</a></li>"""  # from SovereignWebsite__Factory seed/shared/family-bar.html
-# Full bar on wide screens; on phones it folds into one line (design.b, 20 November 2026). No script.
-FAMILY = f"""<nav class="family" aria-label="The Sovereign Website family">
-  <ul class="family-wide">
+# Dinis Cruz, 20 November 2026: the site is about Emily; the family links live only in a small menu at the
+# far top right of the header, after "Choose a design". CSS only (details/summary).
+FAMILY = f"""<details class="family-menu">
+    <summary><span class="dots" aria-hidden="true"></span><span class="sr">The Sovereign Website family</span></summary>
+    <nav class="family-menu-panel" aria-label="The Sovereign Website family">
+      <p>Part of the Sovereign Website family</p>
+      <ul>
 {FAMILY_LINKS}
-  </ul>
-  <details class="family-narrow"><summary>Sovereign Website family</summary><ul>
-{FAMILY_LINKS}
-  </ul></details>
-</nav>"""  # from SovereignWebsite__Factory seed/shared/family-bar.html
+      </ul>
+    </nav>
+  </details>"""  # from SovereignWebsite__Factory seed/shared/family-bar.html
 
 # ---------------------------------------------------------------- pieces
 GALLERY_SIZES = "(min-width: 68rem) 22rem, (min-width: 30rem) 50vw, 100vw"
@@ -464,11 +466,11 @@ def page(n, pre, switcher):
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-{FAMILY}
 <header class="bar">
   <a class="brand" href="{"#top" if on_home else "../index.html"}">Emily Cruz</a>
   <nav aria-label="Sections">{nav}</nav>
   {chooser}
+  {FAMILY}
 </header>
 <main id="main" tabindex="-1">
 {BODIES[n](pre)}
@@ -498,8 +500,9 @@ def designs_index():
 </head>
 <body class="designs-page">
 <a class="skip" href="#main">Skip to content</a>
-{FAMILY}
-<header class="bar"><a class="brand" href="../index.html">Emily Cruz</a></header>
+<header class="bar"><a class="brand" href="../index.html">Emily Cruz</a>
+  {FAMILY}
+</header>
 <main id="main" tabindex="-1">
 <section>
 <h1>Choose a design</h1>

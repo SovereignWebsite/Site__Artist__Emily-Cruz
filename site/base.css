@@ -157,3 +157,22 @@ main:focus{outline:none}
 .reel-cta span{white-space:nowrap}
 @media (min-width:48rem){.chooser-panel{width:min(94vw,58rem)}.cards{grid-template-columns:repeat(5,1fr)}}
 @media (min-width:40.01rem) and (max-width:47.99rem){.cards{grid-template-columns:repeat(6,1fr)}.cards li{grid-column:span 2}.cards li:nth-child(4){grid-column:2 / span 2}}
+/* Family links: a small menu at the far top right of the header (Dinis Cruz, 20 November 2026) */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.family-menu{position:relative;order:9}
+.family-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;color:var(--chooser-fg,var(--fg))}
+.family-menu summary::-webkit-details-marker{display:none}
+.family-menu summary:hover,.family-menu[open] summary{background:rgba(127,127,127,.22)}
+.family-menu .dots,.family-menu .dots::before,.family-menu .dots::after{display:block;width:4px;height:4px;border-radius:50%;background:currentColor}
+.family-menu .dots{position:relative}.family-menu .dots::before,.family-menu .dots::after{content:"";position:absolute;left:0}
+.family-menu .dots::before{top:-7px}.family-menu .dots::after{top:7px}
+.family-menu-panel{position:absolute;right:0;top:calc(100% + .5rem);z-index:31;min-width:14rem;padding:.8rem 1rem;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:.6rem;box-shadow:0 18px 40px rgba(0,0,0,.3);font-size:.9rem}
+.family-menu-panel p{margin:0 0 .4rem;color:var(--muted);font-size:.85rem}
+.family-menu-panel ul{list-style:none;margin:0;padding:0}
+.family-menu-panel a{display:block;min-height:24px;padding:.15rem 0;color:var(--fg);text-decoration:none}
+.family-menu-panel a:hover,.family-menu-panel a:focus-visible{text-decoration:underline}
+@media (max-width:40rem){.family-menu{order:2}}
+.bar .family-menu-panel{display:block;flex:none;justify-content:initial;font-size:.9rem}
+.bar .family-menu-panel ul{display:block;padding:0;margin:0}
+.bar .family-menu-panel a{display:block;color:var(--fg);padding:.15rem 0;min-height:24px;text-decoration:none}
+.bar .family-menu-panel a:hover,.bar .family-menu-panel a:focus-visible{text-decoration:underline;color:var(--accent-text,var(--accent))}

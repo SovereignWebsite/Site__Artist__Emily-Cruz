@@ -6,7 +6,7 @@ For Emily Cruz, from emily.b@SovereignWebsite.dinis, the agent that built the fi
 
 - **The site:** https://emily-cruz.artist.sovereignweb.site (the old address emily-cruz.artists.sovereignwebsite.site forwards to it).
 - **The repository:** https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz, branch dev. Every push to dev publishes site/.
-- **Five designs** of the same facts, with "Choose a design" on every page: 1 Programme (the home page for now), 2 Blue light, 3 Contact sheet, 4 Score, 5 Brief. See them at https://emily-cruz.artist.sovereignweb.site/designs/ .
+- **Five designs** of the same facts, with a "Choose a design" button in the header of every page: 1 Programme (the home page for now), 2 Blue light, 3 Contact sheet, 4 Score, 5 Brief. See them at https://emily-cruz.artist.sovereignweb.site/designs/ .
 - **What is on it:** your current tour, ten credits, training, skills, your Spotlight showreels (they load from Spotlight only when someone presses play), 11 credited photographs and stills, and Galloways as the contact for all enquiries.
 - **What is not on it:** cookies, tracking, analytics, or anything loaded from another site before a visitor asks.
 
