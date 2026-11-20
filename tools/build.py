@@ -428,7 +428,7 @@ def cards(pre, current, on_home):
         href = f"{pre}designs/{k}.html" if on_home else f"{k}.html"
         cur = ' aria-current="page"' if k == current else ""
         shot = f"{pre}images/shots/d{k}"
-        out.append(f'<li><a href="{href}"{cur}><img src="{shot}-480.webp" alt="" width="480" height="300" loading="lazy" decoding="async">'
+        out.append(f'<li><a href="{href}"{cur}><img src="{shot}-640.webp" alt="" width="640" height="400" loading="lazy" decoding="async">'
                    f'<strong>{k}. {nm}</strong><span>{LINES[k]}</span></a></li>')
     return "".join(out)
 
