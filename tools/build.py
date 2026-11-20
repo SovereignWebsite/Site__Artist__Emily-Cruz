@@ -213,7 +213,7 @@ def programme(pre):
 <section id="gallery" class="plates" aria-labelledby="gallery-h">
   <p class="kicker">In performance</p>
   <h2 id="gallery-h">Photographs</h2>
-  {spread(STILLS + [PHOTOS[3]], pre, cls="mosaic")}
+  {spread([PHOTOS[3]] + STILLS, pre, cls="mosaic")}
 </section>
 <section id="skills" class="notes" aria-labelledby="skills-h">
   <p class="kicker">Programme notes</p>
@@ -241,7 +241,7 @@ def programme(pre):
 # ---------------------------------------------------------------- 2 Blue light
 def bluelight(pre):
     name, alt, cap = HEADSHOT
-    gallery = "".join(fig(s, pre) for s in STILLS + PHOTOS)
+    gallery = "".join(fig(s, pre) for s in PHOTOS + STILLS)
     return f'''<section class="stage bleed" id="top" aria-labelledby="name">
   <div class="haze" aria-hidden="true"></div><div class="cone" aria-hidden="true"></div>
   <figure class="lit">{img(name, alt, pre, lazy=False, sizes="(min-width: 46rem) 30rem, 64vw", big=True)}</figure>
@@ -288,7 +288,7 @@ def score(pre):
                       for g, items in SKILLS)
     rep = "".join(f'<li><span class="no">No. {len(CREDITS) - i}</span><span class="t"><em>{html.escape(p)}</em> <span class="role">{r}</span></span><span class="dots" aria-hidden="true"></span><span class="yr">{y}</span><span class="by">{c}. Directed by {d}.</span></li>'
                   for i, (y, p, t, r, d, c) in enumerate(CREDITS))
-    plates = "".join(fig(s, pre) for s in STILLS[1::2] + STILLS[0::2] + PHOTOS)
+    plates = "".join(fig(s, pre) for s in PHOTOS + STILLS)
     return f'''<div class="sheet">
 <section class="title-page" id="top" aria-labelledby="name">
   <p class="dedication"><em>A portfolio in five movements</em></p>

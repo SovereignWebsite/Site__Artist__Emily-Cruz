@@ -64,3 +64,5 @@ h1,h2,h3{font-family:var(--serif)}
 .reel-title{font-variant:small-caps;font-weight:400}
 footer{max-width:64rem}
 @media (max-width:40rem){.staff{padding-left:3rem}.clef{font-size:3.2rem;top:-2px}.time{left:1.9rem;font-size:1.05rem}.notes li{width:4.9rem;height:100px}.notes li::before{left:1rem}.notes li::after{left:calc(1rem + 11.5px)}.lyric{font-size:.8rem;left:.1rem}}
+/* 24px targets for the movement links in the header (design.b round 3) */
+.bar nav a{display:inline-flex;justify-content:center;align-items:center;min-width:24px;min-height:24px}

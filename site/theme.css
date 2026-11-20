@@ -79,3 +79,8 @@ section{border-bottom:0}
 .back a{color:#fff3d6}
 footer{border-top:0}
 .btn{border-radius:.2rem}
+/* small type on dark red and oxblood: 1rem and a brighter tint (design.b round 3) */
+.cover .photo-credit,.spread figcaption,.mosaic figcaption{font-size:1rem}
+.cast .by,.screen .meta{font-size:1rem;color:#ead9c5}
+.cast-page .kicker,.screen .kicker,.back .kicker{color:#f6dc97}
+.cover .kicker em,.band .lead em,.cast .prod em{white-space:normal;font-style:italic}
