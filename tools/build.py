@@ -78,9 +78,7 @@ DESIGNS = {
     5: ("Brief", "The plain casting brief: one printable page for a casting director in a hurry."),
 }
 
-FAMILY = """<nav class="family" aria-label="The Sovereign Website family">
-  <ul>
-    <li><a href="https://sovereignwebsite.ai/">Sovereign Website</a></li>
+FAMILY_LINKS = """    <li><a href="https://sovereignwebsite.ai/">Sovereign Website</a></li>
     <li><a href="https://sovereignwebsite.org/">Principles</a></li>
     <li><a href="https://sovereignwebsite.site/">Hosted</a></li>
     <li><a href="https://hub.sovereignweb.site/">Hub</a></li>
@@ -88,8 +86,15 @@ FAMILY = """<nav class="family" aria-label="The Sovereign Website family">
     <li><a href="https://vault.sovereignwebsite.site/">Vault</a></li>
     <li class="family-sep"><a href="https://agenticcells.ai/">AgentiCCells</a></li>
     <li><a href="https://riskmandate.ai/">RiskMandate</a></li>
-    <li><a href="https://newsroom.sgit.ai/">Newsroom</a></li>
+    <li><a href="https://newsroom.sgit.ai/">Newsroom</a></li>"""  # from SovereignWebsite__Factory seed/shared/family-bar.html
+# Full bar on wide screens; on phones it folds into one line (design.b, 20 November 2026). No script.
+FAMILY = f"""<nav class="family" aria-label="The Sovereign Website family">
+  <ul class="family-full">
+{FAMILY_LINKS}
   </ul>
+  <details class="family-fold"><summary>Sovereign Website family</summary><ul>
+{FAMILY_LINKS}
+  </ul></details>
 </nav>"""  # from SovereignWebsite__Factory seed/shared/family-bar.html
 
 # ---------------------------------------------------------------- pieces

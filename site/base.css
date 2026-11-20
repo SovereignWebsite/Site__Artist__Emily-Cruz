@@ -99,3 +99,8 @@ footer p{max-width:var(--text)}
 @media print{.family,.switcher,.bar,.no-print,footer,.btn{display:none!important}body{background:#fff;color:#000}section{padding:1rem 0;break-inside:avoid}a{color:#000}}
 /* Choose a design: one compact line on phones */
 @media (max-width:30rem){.switcher{display:flex;align-items:center;gap:.6rem;padding:.4rem 16px}.switcher p{margin:0;white-space:nowrap}.switcher ul{margin:0}}
+/* Family bar folds to one line on phones */
+.family-fold{display:none}
+.family-fold summary{cursor:pointer;min-height:24px;padding:.2rem 16px;color:var(--muted);max-width:var(--max);margin:0 auto}
+.family-fold summary:hover,.family-fold summary:focus-visible{color:var(--fg)}
+@media (max-width:40rem){.family-full{display:none!important}.family-fold{display:block}}
