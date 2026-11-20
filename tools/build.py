@@ -418,6 +418,164 @@ CSP = ("default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self';
        "frame-src https://mediaviewer.spotlight.com; base-uri 'none'; form-action 'none'")
 
 
+# ---------------------------------------------------------------- link previews, start, agents, admin
+SITE_URL = "https://emily-cruz.artist.sovereignweb.site/"
+DESC = "Emily Cruz, actor-musician and artist. BA (Hons) Actor-Musician, Guildford School of Acting, 2026. Represented by Galloways."
+
+
+def og(path, title, desc=DESC):
+    """Link preview tags (WhatsApp, social media, chat apps). Dinis Cruz, 20 November 2026."""
+    return f'''<link rel="canonical" href="{SITE_URL}{path}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Emily Cruz">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="{html.escape(title)}">
+<meta property="og:description" content="{html.escape(desc)}">
+<meta property="og:url" content="{SITE_URL}{path}">
+<meta property="og:image" content="{SITE_URL}images/social-card.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Emily Cruz, actor-musician and artist, beside her headshot (photo YellowBellyPhoto)">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{html.escape(title)}">
+<meta name="twitter:description" content="{html.escape(desc)}">
+<meta name="twitter:image" content="{SITE_URL}images/social-card.jpg">
+<meta name="twitter:image:alt" content="Emily Cruz, actor-musician and artist, beside her headshot (photo YellowBellyPhoto)">'''
+
+
+def footer(pre):
+    return f'''<footer>
+  <p class="foot-links"><a href="{pre}start/">Start here</a> <span aria-hidden="true">·</span> <a href="{pre}agents/">Use this site with your AI</a> <span aria-hidden="true">·</span> <a href="{pre}llms.txt">llms.txt</a> <span aria-hidden="true">·</span> <a href="{pre}admin/">How this site was made</a> <span aria-hidden="true">·</span> <a href="{pre}designs/">All five designs</a></p>
+  <p>A sovereign website: Emily's own files, history and address. No cookies, no tracking, no third-party scripts. The showreels come from Spotlight only when you press play. Text licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; photographs remain their photographers'. Source: <a href="https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz">SovereignWebsite/Site__Artist__Emily-Cruz</a>.</p>
+</footer>'''
+
+
+def header_links(pre):
+    return f'<p class="head-links"><a href="{pre}start/">Start here</a> <a href="{pre}agents/">Use with your AI</a></p>'
+
+
+REPO = "https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz"
+
+
+def plain(path, title, h1, body, desc=DESC):
+    pre = "../"
+    return f'''<!doctype html>
+<html lang="en-GB" class="plain">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
+<title>{title}</title>
+<meta name="description" content="{html.escape(desc)}">
+{og(path, title, desc)}
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="{pre}favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="{pre}base.css">
+<link rel="stylesheet" href="{pre}theme.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="bar">
+  <a class="brand" href="{pre}index.html">Emily Cruz</a>
+  <nav aria-label="Site"><a href="{pre}start/">Start here</a><a href="{pre}agents/">Use with your AI</a><a href="{pre}admin/">How it was made</a></nav>
+  {FAMILY}
+</header>
+<main id="main" tabindex="-1" class="doc">
+<section>
+<h1>{h1}</h1>
+{body}
+</section>
+</main>
+{footer(pre)}
+</body>
+</html>
+'''
+
+
+def start_page():
+    b = f'''<p class="lead">Emily, this is your site. These steps hand it over to you, so you and your own Claude can change words, add photos and choose a design.</p>
+<ol class="steps">
+  <li><h2>Get a GitHub account</h2><p>If you do not have one, make one free at <a href="https://github.com/signup">github.com/signup</a>, and send Dinis the username.</p></li>
+  <li><h2>Accept the invitation</h2><p>Dinis invites your account to the repository. Accept it from GitHub's email, or at <a href="{REPO}/invitations">the repository's invitations page</a>. You can push to the dev branch; every push publishes the site a minute or two later.</p></li>
+  <li><h2>Connect your Claude to GitHub</h2><p>In the browser or the Claude app: go to <a href="https://claude.ai/code">claude.ai/code</a>, sign in, and follow the prompt to connect GitHub (GitHub asks you to authorise Claude). Then choose the repository SovereignWebsite/Site__Artist__Emily-Cruz and the dev branch. On your own computer instead: install Claude Code from <a href="https://code.claude.com/docs/en/setup">its setup page</a>. You never paste a token or password anywhere.</p></li>
+  <li><h2>Paste the prompt</h2><p>Paste the prompt from <a href="{REPO}/blob/dev/docs/prompt-for-your-claude.md">docs/prompt-for-your-claude.md</a> into your Claude. It tells your Claude how the site is made and the rules it keeps to.</p></li>
+  <li><h2>Answer the questions</h2><p>Your Claude can go through <a href="{REPO}/blob/dev/docs/questions-for-emily.md">docs/questions-for-emily.md</a> with you: photo credits, a bio, your details, Instagram and TikTok, and which design you like.</p></li>
+  <li><h2>Choose a design</h2><p>Press "Choose a design" at the top of any page, or see <a href="../designs/">all five side by side</a>. Tell your Claude which one should be the home page.</p></li>
+</ol>
+<p>What is here, file by file: <a href="{REPO}/blob/dev/docs/handover.md">docs/handover.md</a>. Where every fact and photo came from: <a href="{REPO}/blob/dev/docs/sources.md">docs/sources.md</a>.</p>'''
+    return plain("start/", "Start here, Emily Cruz", "Start here", b, "How Emily takes over her own site and connects her Claude to GitHub.")
+
+
+def agents_page():
+    b = f'''<p class="lead">Use this site with your AI assistant. Everything about Emily on this site is in one plain text file, made for AI assistants to read: <a href="../llms.txt">llms.txt</a>.</p>
+<h2>Try asking your AI</h2>
+<ul class="asks">
+  <li>"Read {SITE_URL}llms.txt and summarise Emily Cruz's stage credits."</li>
+  <li>"From {SITE_URL}llms.txt, which instruments does Emily Cruz play, and has she worked as a musical director?"</li>
+  <li>"Using {SITE_URL}llms.txt, how do I contact Emily Cruz's agent about casting?"</li>
+</ul>
+<h2>What the file holds</h2>
+<p>Her current work (dated), credits, training, skills, accents, languages, the playing details from her Spotlight profile, links to her showreels, and her agent's public contact details. Nothing in it is guessed: it comes from her Spotlight profile, as supplied on 20 November 2026.</p>
+<h2>For AI agents</h2>
+<p>This is a static site: no forms, no API, no cookies. Please quote facts as written, keep their dates, and send casting enquiries to her agent, Galloways. The source is public at <a href="{REPO}">{REPO}</a>.</p>'''
+    return plain("agents/", "Use with your AI, Emily Cruz", "Use this site with your AI", b, "Emily Cruz's facts in one plain text file for AI assistants: llms.txt.")
+
+
+def llms_txt():
+    lines = ["# Emily Cruz", "", "> Actor-musician and artist (she/her). BA (Hons) Actor-Musician, Guildford School of Acting, 2023 to 2026. Based in Greater London. Represented by Galloways.", "",
+             "Facts from Emily's Spotlight profile, as supplied on 20 November 2026. Please keep dates with facts.", "",
+             "## Now", "", "- As of November 2026: UK tour of Pride and Prejudice* *(sort of), 1st Cover: Effie, Flo, Tillie (director Isobel McArthur; company David Pugh).", "",
+             "## Credits", ""]
+    lines += [f"- {y}: {p} ({t}). Role: {r}. Director: {d}. Company: {c}." for y, p, t, r, d, c in CREDITS]
+    lines += ["", "## Training", "", f"- {TRAINING}", "", "## Skills", ""]
+    lines += [f"- {g}: {', '.join(items)}." for g, items in SKILLS]
+    lines += ["", "## Details", ""] + [f"- {k}: {v}." for k, v in FACTS]
+    lines += ["", "## Showreels (hosted by Spotlight)", "",
+              f"- Showcase, They All Laughed (1 min 9 s): {REEL}{SHOWCASE_REEL[0]}",
+              f"- Instrumental reel (2 min 5 s): {REEL}{INSTR_REEL[0]}", "",
+              "## Representation", "", "- Galloways, Henry Wood House, 4-5 Langham Place, London W1B 3DG. 020 7631 3134 or 07752 705359. agents@gallowaysagency.com", "",
+              "## Links", "", f"- Site: {SITE_URL}", f"- Spotlight: {SPOTLIGHT}", f"- GSA graduates 2026: {GSA}", f"- Source: {REPO}", ""]
+    return "\n".join(lines)
+
+
+ROUNDS = [
+    ("e409581", "sites.b", "First page: headshot, role, training, links."),
+    ("e770480", "emily.b", "Full portfolio from her Spotlight profile: reels on click, credited gallery, credits, skills, agent."),
+    ("bd1166c", "emily.b", "Five designs (first set) and design guideline fixes, at design.b's request."),
+    ("c9f0f45", "emily.b", "design.b round 1: each design rebuilt around an idea from Emily's world; Programme goes live."),
+    ("c5b7ac2", "emily.b", "Dinis's founder and personal site guidelines: choose a design on every page, handover documents."),
+    ("af957fd", "emily.b", "design.b round 2: 24px targets, focusable main. Rated 3."),
+    ("d5c475f", "emily.b", "Round 3 after Dinis's review: scaffolding removed, screenshot chooser, every design rebuilt to be visual."),
+    ("f85a9e2", "emily.b", "design.b round 3 fixes. Synthetic users: 4, 4, 4, 4, 4."),
+    ("8675c1d", "emily.b", "Family strip removed at Dinis's request; family links in a top-right menu."),
+]
+
+
+def admin_page():
+    rows = "".join(f'<tr><td><a href="{REPO}/commit/{c}"><code>{c}</code></a></td><td>{who}</td><td>{what}</td></tr>' for c, who, what in ROUNDS)
+    b = f'''<p class="lead">How this site was made, and by whom. Everything here is public, like the site.</p>
+<h2>Who made it</h2>
+<ul>
+  <li><strong>Dinis Cruz</strong> asked for it, with Emily's agreement, supplied the photos and the facts from her Spotlight profile, and reviewed the designs.</li>
+  <li><strong>emily.b</strong>, an AI agent (Claude), built and maintains the site. Every commit is signed with its own published key.</li>
+  <li><strong>design.b</strong> reviewed each design round against the Sovereign Website design guidelines, ran accessibility checks and synthetic users.</li>
+  <li><strong>sites.b</strong> made the first page; <strong>factory.b</strong> set up the repository, address and publishing; <strong>hub.b</strong> lists it in the showroom; <strong>conductor.b</strong> registered the signing key.</li>
+</ul>
+<h2>The rounds</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Commits"><table><thead><tr><th scope="col">Commit</th><th scope="col">By</th><th scope="col">What changed</th></tr></thead><tbody>{rows}</tbody></table></div>
+<p>The full history: <a href="{REPO}/commits/dev">every commit on dev</a>.</p>
+<h2>How it is checked</h2>
+<ul>
+  <li>axe-core accessibility checks on every page, at phone (390 px) and desktop (1366 px) widths, in light and dark mode.</li>
+  <li>No request to another site on load, no cookies, no storage, no horizontal scroll; first load well under 1 MB.</li>
+  <li>Synthetic users (design.b, round 3, 20 November 2026): five visitors each rated the home page 4 (design.b's scale); all five would show it to a friend.</li>
+</ul>
+<h2>How it is built</h2>
+<p>Static files only. tools/build.py writes every page from one set of facts; tools/social_card.py makes the link preview image. The showreels are Spotlight's player, loaded only when a visitor presses play.</p>'''
+    return plain("admin/", "How this site was made, Emily Cruz", "How this site was made", b, "Who made Emily Cruz's site, the design rounds and commits, and how it is checked.")
+
+
 LINES = {  # one line per design, for the chooser cards
     1: "A West End programme", 2: "The showcase stage", 3: "A photographer's proof sheet",
     4: "An engraved score", 5: "A casting brief",
@@ -458,6 +616,7 @@ def page(n, pre, switcher):
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>{title}</title>
 <meta name="description" content="Emily Cruz, actor-musician and artist. BA (Hons) Actor-Musician, Guildford School of Acting, 2026. Represented by Galloways.">
+{og("" if on_home else f"designs/{n}.html", title)}
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="{pre}favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="{pre}base.css">
@@ -469,15 +628,14 @@ def page(n, pre, switcher):
 <header class="bar">
   <a class="brand" href="{"#top" if on_home else "../index.html"}">Emily Cruz</a>
   <nav aria-label="Sections">{nav}</nav>
+  {header_links(pre)}
   {chooser}
   {FAMILY}
 </header>
 <main id="main" tabindex="-1">
 {BODIES[n](pre)}
 </main>
-<footer>
-  <p>A sovereign website: Emily's own files, history and address. No cookies, no tracking, no third-party scripts. The showreels come from Spotlight only when you press play. Text licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; photographs remain their photographers'. Source: <a href="https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz">SovereignWebsite/Site__Artist__Emily-Cruz</a>.</p>
-</footer>
+{footer(pre)}
 </body>
 </html>
 '''
@@ -493,6 +651,8 @@ def designs_index():
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
 <title>Five designs, Emily Cruz</title>
+<meta name="description" content="Emily Cruz's site in five designs.">
+{og("designs/", "Five designs, Emily Cruz")}
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../base.css">
@@ -510,6 +670,7 @@ def designs_index():
 <ol class="design-cards">{big}</ol>
 </section>
 </main>
+{footer("../")}
 </body>
 </html>
 '''
@@ -521,6 +682,10 @@ if __name__ == "__main__":
     for n in DESIGNS:
         (SITE / "designs" / f"{n}.html").write_text(page(n, "../", switcher=True))
     (SITE / "designs" / "index.html").write_text(designs_index())
+    for d, fn in (("start", start_page), ("agents", agents_page), ("admin", admin_page)):
+        (SITE / d).mkdir(exist_ok=True)
+        (SITE / d / "index.html").write_text(fn())
+    (SITE / "llms.txt").write_text(llms_txt())
     theme = (SITE / "designs" / f"d{CHOSEN}.css").read_text()
     (SITE / "theme.css").write_text(theme)
     print(f"built index.html (design {CHOSEN}, {DESIGNS[CHOSEN][0]}) and designs/1-5.html")

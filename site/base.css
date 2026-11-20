@@ -176,3 +176,16 @@ main:focus{outline:none}
 .bar .family-menu-panel ul{display:block;padding:0;margin:0}
 .bar .family-menu-panel a{display:block;color:var(--fg);padding:.15rem 0;min-height:24px;text-decoration:none}
 .bar .family-menu-panel a:hover,.bar .family-menu-panel a:focus-visible{text-decoration:underline;color:var(--accent-text,var(--accent))}
+/* Start here and Use with your AI, visible in the header; three plain pages */
+.head-links{display:flex;gap:.9rem;margin:0;font-size:.9rem;font-weight:600}
+.head-links a{color:var(--chooser-fg,var(--fg));text-decoration:underline;text-underline-offset:3px;min-height:24px;display:inline-flex;align-items:center}
+@media (max-width:40rem){.head-links{order:4;flex-basis:100%;gap:1.2rem}}
+.foot-links{font-weight:600}
+.doc{max-width:48rem}
+.doc h1{font-size:clamp(2.4rem,7vw,3.8rem)}
+.steps{list-style:none;padding:0;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding:0 0 1.2rem 3.4rem;border-left:2px solid var(--line);margin-left:1.1rem}
+.steps li::before{content:counter(s);position:absolute;left:-1.15rem;top:0;width:2.3rem;height:2.3rem;border-radius:50%;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center;font-weight:700}
+.steps h2{font-size:1.25rem;margin:.2rem 0 .3rem}
+.asks li{font-family:var(--serif);font-size:1.1rem;margin-bottom:.5rem}
+.plain .bar nav a{color:var(--chooser-fg,var(--fg))}
