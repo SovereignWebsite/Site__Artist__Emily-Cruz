@@ -444,7 +444,7 @@ def page(n, pre, switcher):
   <a class="brand" href="#top">Emily Cruz</a>
   <nav aria-label="Sections">{nav}</nav>
 </header>
-<main id="main">
+<main id="main" tabindex="-1">
 {BODIES[n](pre)}
 </main>
 <footer>
@@ -473,7 +473,7 @@ def designs_index():
 <a class="skip" href="#main">Skip to content</a>
 {FAMILY}
 <header class="bar"><a class="brand" href="../index.html">Emily Cruz</a></header>
-<main id="main">
+<main id="main" tabindex="-1">
 <section>
 <h1>Five designs</h1>
 <p>The same facts and photographs, each built around a different idea from Emily's world. Emily chooses one; it becomes the live site. Until then the live site uses design {CHOSEN}, {DESIGNS[CHOSEN][0]}.</p>

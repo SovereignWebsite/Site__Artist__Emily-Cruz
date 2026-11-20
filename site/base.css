@@ -105,3 +105,6 @@ footer p{max-width:var(--text)}
 .family-narrow summary:hover,.family-narrow summary:focus-visible{color:var(--fg)}
 @media (max-width:40rem){.family-wide{display:none!important}.family-narrow{display:block}}
 @media (max-width:40rem){.family .family-narrow ul{flex-direction:column;gap:0;padding:0 16px .4rem}}
+/* 24px targets for inline contact and list links (design.b round 2) */
+address a,.design-list a{display:inline-block;min-height:24px;line-height:24px}
+main:focus{outline:none}
