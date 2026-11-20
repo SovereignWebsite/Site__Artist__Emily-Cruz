@@ -6,13 +6,13 @@ Emily, this page has two parts: first how to connect your Claude to GitHub (once
 
 Steps as of 20 November 2026. These screens change often, so if something looks different, follow the linked page. You never need to copy or paste a token or password anywhere: every sign-in below is GitHub's or Claude's own browser flow.
 
-**First, accept the invitation.** Dinis will invite your GitHub account to the repository. Accept it from the email GitHub sends you, or sign in to GitHub and open https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz/invitations. (No GitHub account yet? Make one free at https://github.com/signup and send Dinis the username.)
+**First, accept both invitations.** Dinis will invite your GitHub account twice: to the SovereignWebsite organisation (as a member) and to your repository (with write access). Claude's GitHub check needs both. Accept the organisation one at https://github.com/orgs/SovereignWebsite/invitation (the link in GitHub's email may not offer an Accept button), and the repository one at https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz/invitations. (No GitHub account yet? Make one free at https://github.com/signup and send Dinis the username.)
 
 **Option A: in the browser or the Claude app (Claude Code on the web).** Needs a paid Claude plan (Pro or above).
 1. Go to https://claude.ai/code and sign in with your Claude account.
 2. Follow the prompt to connect GitHub: GitHub asks you to authorise Claude, approve it, and you are sent back. (To do it again later: https://claude.ai/connect-github.)
 3. Start a session: click the repository selector below the message box, choose SovereignWebsite/Site__Artist__Emily-Cruz, set the branch to dev, then paste the prompt from Part 2.
-4. If the repository does not appear in the list, tell Dinis: the Claude GitHub App has to be allowed on that repository, and only an owner of the SovereignWebsite organisation can do that.
+4. If Claude says it cannot reach the repository, check you accepted both invitations, then press "Check again". If it still does not appear, tell Dinis: the Claude GitHub App has to be allowed on that repository, and only an owner of the SovereignWebsite organisation can do that.
 
 Source: https://code.claude.com/docs/en/web-quickstart and https://code.claude.com/docs/en/claude-code-on-the-web
 
