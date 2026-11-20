@@ -81,13 +81,6 @@ footer p{max-width:var(--text)}
 .design-list a{font-size:1.15rem}
 @media (max-width:45.99rem){.hero-text{order:-1}.hero{gap:1.5rem}}
 @media (max-width:30rem){.switcher .idea{display:none}.switcher ul{flex-wrap:nowrap;overflow-x:auto}.switcher li a{white-space:nowrap}}
-/* Family bar (seed/shared/family-bar.html), explicit colours and 24px targets as in pipeline-demo; .family{ marker kept for build/family-bar.mjs. */
-.family{font-size:.875rem;border-bottom:1px solid var(--line);background:var(--note)}
-.family ul{list-style:none;margin:0 auto;padding:.1rem 16px;display:flex;flex-wrap:wrap;gap:0 1rem;max-width:var(--max)}
-.family a{color:var(--muted);text-decoration:none;display:inline-block;padding:.2rem 0;min-height:24px}
-.family a:hover,.family a:focus-visible{color:var(--fg);text-decoration:underline}
-.family .family-sep{margin-left:auto}
-@media (max-width:40rem){.family .family-sep{margin-left:0}}
 /* Reel posters: a real frame from each reel, credited in the meta line. */
 .play img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:0}
 .play::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65),rgba(0,0,0,.05) 60%)}
@@ -96,15 +89,8 @@ footer p{max-width:var(--text)}
 .kicker{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-text,var(--accent));font-weight:600;margin:0 0 .3rem}
 .links a{color:var(--link,var(--accent))}
 .sub{color:var(--muted)}
-@media print{.family,.switcher,.bar,.no-print,footer,.btn{display:none!important}body{background:#fff;color:#000}section{padding:1rem 0;break-inside:avoid}a{color:#000}}
 /* Choose a design: one compact line on phones */
 @media (max-width:30rem){.switcher{display:flex;align-items:center;gap:.6rem;padding:.4rem 16px}.switcher p{margin:0;white-space:nowrap}.switcher ul{margin:0}}
-/* Family bar folds to one line on phones */
-.family-narrow{display:none}
-.family-narrow summary{cursor:pointer;min-height:24px;padding:.2rem 16px;color:var(--muted);max-width:var(--max);margin:0 auto}
-.family-narrow summary:hover,.family-narrow summary:focus-visible{color:var(--fg)}
-@media (max-width:40rem){.family-wide{display:none!important}.family-narrow{display:block}}
-@media (max-width:40rem){.family .family-narrow ul{flex-direction:column;gap:0;padding:0 16px .4rem}}
 /* 24px targets for inline contact and list links (design.b round 2) */
 address a,.design-list a{display:inline-block;min-height:24px;line-height:24px}
 main:focus{outline:none}
@@ -157,25 +143,7 @@ main:focus{outline:none}
 .reel-cta span{white-space:nowrap}
 @media (min-width:48rem){.chooser-panel{width:min(94vw,58rem)}.cards{grid-template-columns:repeat(5,1fr)}}
 @media (min-width:40.01rem) and (max-width:47.99rem){.cards{grid-template-columns:repeat(6,1fr)}.cards li{grid-column:span 2}.cards li:nth-child(4){grid-column:2 / span 2}}
-/* Family links: a small menu at the far top right of the header (Dinis Cruz, 20 November 2026) */
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.family-menu{position:relative;order:9}
-.family-menu summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;color:var(--chooser-fg,var(--fg))}
-.family-menu summary::-webkit-details-marker{display:none}
-.family-menu summary:hover,.family-menu[open] summary{background:rgba(127,127,127,.22)}
-.family-menu .dots,.family-menu .dots::before,.family-menu .dots::after{display:block;width:4px;height:4px;border-radius:50%;background:currentColor}
-.family-menu .dots{position:relative}.family-menu .dots::before,.family-menu .dots::after{content:"";position:absolute;left:0}
-.family-menu .dots::before{top:-7px}.family-menu .dots::after{top:7px}
-.family-menu-panel{position:absolute;right:0;top:calc(100% + .5rem);z-index:31;min-width:14rem;padding:.8rem 1rem;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:.6rem;box-shadow:0 18px 40px rgba(0,0,0,.3);font-size:.9rem}
-.family-menu-panel p{margin:0 0 .4rem;color:var(--muted);font-size:.85rem}
-.family-menu-panel ul{list-style:none;margin:0;padding:0}
-.family-menu-panel a{display:block;min-height:24px;padding:.15rem 0;color:var(--fg);text-decoration:none}
-.family-menu-panel a:hover,.family-menu-panel a:focus-visible{text-decoration:underline}
-@media (max-width:40rem){.family-menu{order:2}}
-.bar .family-menu-panel{display:block;flex:none;justify-content:initial;font-size:.9rem}
-.bar .family-menu-panel ul{display:block;padding:0;margin:0}
-.bar .family-menu-panel a{display:block;color:var(--fg);padding:.15rem 0;min-height:24px;text-decoration:none}
-.bar .family-menu-panel a:hover,.bar .family-menu-panel a:focus-visible{text-decoration:underline;color:var(--accent-text,var(--accent))}
 /* Start here and Use with your AI, visible in the header; three plain pages */
 .head-links{display:flex;gap:.9rem;margin:0;font-size:.9rem;font-weight:600}
 .head-links a{color:var(--chooser-fg,var(--fg));text-decoration:underline;text-underline-offset:3px;min-height:24px;display:inline-flex;align-items:center}
@@ -193,3 +161,32 @@ main:focus{outline:none}
 a:any-link,code{overflow-wrap:anywhere}
 .doc p,.doc li,footer p{overflow-wrap:anywhere}
 pre{overflow-x:auto;max-width:100%}
+
+/* The Sovereign Website credit on a customer's site: one small, muted control at the far top right that opens a
+   pop-up menu of the family links. Not a strip and not a menu bar: the site is about its owner (Dinis, 20 November
+   2026: "It needs to fundamentally be about the site and who is it about ... top right pop-up menu").
+   CSS only (details/summary), so no script and no CSP issue. It sits in the page's corner, above the owner's header;
+   a site whose own header uses that corner moves it with --family-top / --family-right.
+   To remove it, the owner sets one attribute: <html data-family-credit="off">. */
+.family-credit{--fam-fg:var(--family-fg,#5a5a5a);--fam-strong:var(--family-fg-strong,#111);--fam-bg:var(--family-bg,#fff);
+  position:absolute;top:var(--family-top,.4rem);right:var(--family-right,.75rem);z-index:50;font-size:.75rem;line-height:1.4}
+@media (prefers-color-scheme:dark){.family-credit{--fam-fg:var(--family-fg,#b5b5b5);--fam-strong:var(--family-fg-strong,#fff);--fam-bg:var(--family-bg,#1c1c1c)}}
+.family-credit summary{display:inline-flex;align-items:center;gap:.3rem;cursor:pointer;color:var(--fam-fg);list-style:none;min-height:24px;padding:.15rem .3rem;border-radius:4px}
+.family-credit summary::-webkit-details-marker{display:none}
+.family-credit summary::after{content:"";width:.35rem;height:.35rem;border:solid currentColor;border-width:0 1px 1px 0;transform:rotate(45deg) translateY(-2px)}
+.family-credit summary:hover,.family-credit summary:focus-visible,.family-credit[open] summary{color:var(--fam-strong)}
+.family-credit ul{position:absolute;right:0;top:100%;margin:.25rem 0 0;padding:.35rem 0;list-style:none;min-width:11rem;
+  background:var(--fam-bg);border:1px solid rgba(127,127,127,.3);border-radius:6px;box-shadow:0 4px 16px rgba(0,0,0,.12)}
+.family-credit a{display:block;padding:.3rem .8rem;min-height:24px;color:var(--fam-fg);text-decoration:none}
+.family-credit a:hover,.family-credit a:focus-visible{color:var(--fam-strong);background:rgba(127,127,127,.1)}
+.family-credit .family-gap{border-bottom:1px solid rgba(127,127,127,.25);padding-bottom:.3rem;margin-bottom:.3rem}
+[data-family-credit="off"] .family-credit{display:none}
+@media print{.family-credit{display:none}}
+
+/* In this site the credit sits inside the sticky header, after "Choose a design", not in the page corner. */
+.bar .family-credit{position:relative;top:auto;right:auto;order:9;font-size:.85rem}
+.bar .family-credit summary{color:var(--chooser-fg,var(--fg))}
+.bar .family-credit ul{background:var(--surface);z-index:31}
+.bar .family-credit ul a{color:var(--fg)}
+.bar .family-credit ul a:hover,.bar .family-credit ul a:focus-visible{color:var(--accent-text,var(--accent))}
+@media (max-width:40rem){.bar .family-credit{order:2}}

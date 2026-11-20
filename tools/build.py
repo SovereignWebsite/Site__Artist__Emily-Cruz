@@ -78,26 +78,25 @@ DESIGNS = {
     5: ("Brief", "The plain casting brief: one printable page for a casting director in a hurry."),
 }
 
-FAMILY_LINKS = """    <li><a href="https://sovereignwebsite.ai/">Sovereign Website</a></li>
+# The Sovereign Website credit for a customer's site: the Factory's seed/shared/family-credit.html (f759821),
+# unchanged, placed at the far right of the header after "Choose a design" (Dinis Cruz, 20 November 2026).
+FAMILY = """<details class="family-credit">
+  <summary>Sovereign Website</summary>
+  <ul>
+    <li><a href="/start/">Start here</a></li>
+    <li><a href="/agents/">Use with your AI</a></li>
+    <li class="family-gap"><a href="/admin/">How this site was made</a></li>
+    <li><a href="https://sovereignwebsite.ai/">Sovereign Website</a></li>
     <li><a href="https://sovereignwebsite.org/">Principles</a></li>
     <li><a href="https://sovereignwebsite.site/">Hosted</a></li>
     <li><a href="https://hub.sovereignweb.site/">Hub</a></li>
     <li><a href="https://agents.sovereignweb.site/">Agents</a></li>
     <li><a href="https://vault.sovereignwebsite.site/">Vault</a></li>
-    <li class="family-sep"><a href="https://agenticcells.ai/">AgentiCCells</a></li>
+    <li><a href="https://agenticcells.ai/">AgentiCCells</a></li>
     <li><a href="https://riskmandate.ai/">RiskMandate</a></li>
-    <li><a href="https://newsroom.sgit.ai/">Newsroom</a></li>"""  # from SovereignWebsite__Factory seed/shared/family-bar.html
-# Dinis Cruz, 20 November 2026: the site is about Emily; the family links live only in a small menu at the
-# far top right of the header, after "Choose a design". CSS only (details/summary).
-FAMILY = f"""<details class="family-menu">
-    <summary><span class="dots" aria-hidden="true"></span><span class="sr">The Sovereign Website family</span></summary>
-    <nav class="family-menu-panel" aria-label="The Sovereign Website family">
-      <p>Part of the Sovereign Website family</p>
-      <ul>
-{FAMILY_LINKS}
-      </ul>
-    </nav>
-  </details>"""  # from SovereignWebsite__Factory seed/shared/family-bar.html
+    <li><a href="https://newsroom.sgit.ai/">Newsroom</a></li>
+  </ul>
+</details>"""  # from SovereignWebsite__Factory seed/shared/family-bar.html
 
 # ---------------------------------------------------------------- pieces
 GALLERY_SIZES = "(min-width: 68rem) 22rem, (min-width: 30rem) 50vw, 100vw"
@@ -432,7 +431,7 @@ def og(path, title, desc=DESC):
 <meta property="og:title" content="{html.escape(title)}">
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{SITE_URL}{path}">
-<meta property="og:image" content="{SITE_URL}images/social-card.jpg">
+<meta property="og:image" content="{SITE_URL}assets/share/card-1200x630.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -440,7 +439,7 @@ def og(path, title, desc=DESC):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{html.escape(title)}">
 <meta name="twitter:description" content="{html.escape(desc)}">
-<meta name="twitter:image" content="{SITE_URL}images/social-card.jpg">
+<meta name="twitter:image" content="{SITE_URL}assets/share/card-1200x630.jpg">
 <meta name="twitter:image:alt" content="Emily Cruz, actor-musician and artist, beside her headshot (photo YellowBellyPhoto)">'''
 
 
@@ -497,7 +496,7 @@ def start_page():
     b = f'''<p class="lead">Emily, this is your site. These steps hand it over to you, so you and your own Claude can change words, add photos and choose a design.</p>
 <ol class="steps">
   <li><h2>Get a GitHub account</h2><p>If you do not have one, make one free at <a href="https://github.com/signup">github.com/signup</a>, and send Dinis the username.</p></li>
-  <li><h2>Accept both invitations</h2><p>Dinis invites you twice: to the SovereignWebsite organisation (as a member) and to your repository (with write access). Accept the organisation invitation at <a href="https://github.com/orgs/SovereignWebsite/invitation">github.com/orgs/SovereignWebsite/invitation</a>, because the link in GitHub's email may not offer an Accept button. Accept the repository one at <a href="{REPO}/invitations">the repository's invitations page</a>. Claude's GitHub check needs both. You can push to the dev branch; every push publishes the site a minute or two later.</p></li>
+  <li><h2>Accept both invitations</h2><p>Dinis invites you twice: to the SovereignWebsite organisation (as a member) and to your repository (with write access). Accept the organisation invitation at <a href="https://github.com/orgs/SovereignWebsite/invitation">github.com/orgs/SovereignWebsite/invitation</a>, because the link in GitHub's email may not offer an Accept button. Accept the repository one from GitHub's email, or sign in and open <a href="{REPO}">the repository</a>: GitHub shows the invitation at the top. Claude's GitHub check needs both. You can push to the dev branch; every push publishes the site a minute or two later.</p></li>
   <li><h2>Connect your Claude to GitHub</h2><p>In the browser or the Claude app: go to <a href="https://claude.ai/code">claude.ai/code</a>, sign in, and follow the prompt to connect GitHub (GitHub asks you to authorise Claude). If Claude says it cannot reach the repository, accept both invitations and press "Check again". Then choose the repository SovereignWebsite/Site__Artist__Emily-Cruz and the dev branch. On your own computer instead: install Claude Code from <a href="https://code.claude.com/docs/en/setup">its setup page</a>. You never paste a token or password anywhere.</p></li>
   <li><h2>Paste the prompt</h2><p>Paste the prompt from <a href="{REPO}/blob/dev/docs/prompt-for-your-claude.md">docs/prompt-for-your-claude.md</a> into your Claude. It tells your Claude how the site is made and the rules it keeps to.</p></li>
   <li><h2>Answer the questions</h2><p>Your Claude can go through <a href="{REPO}/blob/dev/docs/questions-for-emily.md">docs/questions-for-emily.md</a> with you: photo credits, a bio, your details, Instagram and TikTok, and which design you like.</p></li>

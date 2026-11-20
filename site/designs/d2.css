@@ -3,7 +3,6 @@
 :root{--bg:#eef0fa;--surface:#fff;--fg:#141a33;--muted:#454d6b;--accent:#22349b;--on-accent:#fff;--line:#d5d9ee;--note:#e2e6f7;--field-border:#6c7397;--bar:#02030f;--amber:#ffc35a;
   --head:Impact,"Haettenschweiler","Arial Narrow Bold","Helvetica Neue","Roboto Condensed",sans-serif;--chooser-fg:#fff;--chooser-border:#ffc35a}
 @media (prefers-color-scheme:dark){:root{--bg:#070a22;--surface:#0f1540;--fg:#eef0ff;--muted:#b4bbe0;--accent:#ffc35a;--on-accent:#070a22;--line:#1f2860;--note:#121a4c;--field-border:#7079ad}}
-.family{background:#000}.family a,.family .family-narrow summary{color:#c7cbe6}.family a:hover,.family a:focus-visible,.family .family-narrow summary:hover,.family .family-narrow summary:focus-visible{color:#fff}
 .bar{background:var(--bar);border-bottom:1px solid #141a4a}.bar .brand,.bar nav a{color:#fff}
 h1,h2{font-family:var(--head);font-weight:800;font-stretch:condensed;text-transform:uppercase;letter-spacing:.01em}
 h2{font-size:clamp(2.4rem,8vw,5rem);line-height:.95}

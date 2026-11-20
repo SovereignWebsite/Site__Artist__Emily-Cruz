@@ -7,7 +7,6 @@ body{background:var(--bg)}
 .bar{background:var(--bar);border-bottom:1px solid #3d1219}
 .bar .brand{color:var(--gold);font-family:var(--serif);letter-spacing:.08em;text-transform:uppercase;font-size:.95rem}
 .bar nav a{color:#f3e4d0}
-.family{background:#12040a}.family a,.family .family-narrow summary{color:#d8c5b1}.family a:hover,.family a:focus-visible,.family .family-narrow summary:hover,.family .family-narrow summary:focus-visible{color:#fff}
 h1,h2,h3{font-family:var(--serif)}
 .kicker{font-family:var(--sans);letter-spacing:.22em;font-size:.8rem}
 section{border-bottom:0}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Makes site/images/social-card.jpg (1200 x 630), the link preview for WhatsApp, social media and chat apps,
+"""Makes site/assets/share/card-1200x630.jpg (1200 x 630), the link preview for WhatsApp, social media and chat apps,
 from Emily's headshot (© YellowBellyPhoto) with her name. Needs Pillow and the Liberation fonts."""
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
@@ -24,6 +24,6 @@ d.text((150, 350), "Cruz", font=ImageFont.truetype(F + "LiberationSerif-Italic.t
 d.text((72, 520), "Actor-musician and artist", font=ImageFont.truetype(F + "LiberationSerif-Italic.ttf", 40), fill=(244, 230, 211))
 d.rectangle((0, H - 10, W, H), fill=(142, 20, 36))
 d.text((W - 330, 18), "Photo © YellowBellyPhoto", font=ImageFont.truetype(F + "LiberationSans-Regular.ttf", 20), fill=(255, 255, 255))
-out = ROOT / "site/images/social-card.jpg"
+out = ROOT / "site/assets/share/card-1200x630.jpg"
 im.save(out, "JPEG", quality=84, optimize=True, progressive=True)
 print(out, out.stat().st_size // 1024, "KB")

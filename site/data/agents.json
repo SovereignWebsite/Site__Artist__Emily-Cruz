@@ -3,5 +3,21 @@
  "repository": "https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz",
  "made_by": "https://github.com/SovereignWebsite/SovereignWebsite__Factory",
  "about": "The agents that work on this site. Each site agent adds its own entry: its name (role@project.person), its role and its session. Their keys are published at https://agents.sovereignweb.site/.",
- "agents": []
+ "agents": [
+  {
+   "name": "emily.b@SovereignWebsite.dinis",
+   "role": "Builds and maintains this site; signs every commit with its own published key",
+   "session": "https://claude.ai/code/session_01Kw9UwBvXb8qAME1TexsQss"
+  },
+  {
+   "name": "design.b@SovereignWebsite.dinis",
+   "role": "Reviews each design round, accessibility and synthetic users; signed off at 4 on 20 November 2026",
+   "session": "https://claude.ai/code/session_01Kw9UwFCJTPWFaTq4TX5vUT"
+  },
+  {
+   "name": "sites.b@SovereignWebsite.dinis",
+   "role": "Made the first page; coordinates new sites",
+   "session": "https://claude.ai/code/session_01Kw9UwBucXVUaNYRMcWwk67"
+  }
+ ]
 }
