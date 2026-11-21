@@ -445,7 +445,7 @@ def og(path, title, desc=DESC):
 
 def footer(pre):
     return f'''<footer>
-  <p class="foot-links"><a href="{pre}start/">Start here</a> <span aria-hidden="true">·</span> <a href="{pre}agents/">Use this site with your AI</a> <span aria-hidden="true">·</span> <a href="{pre}llms.txt">llms.txt</a> <span aria-hidden="true">·</span> <a href="{pre}admin/">How this site was made</a> <span aria-hidden="true">·</span> <a href="{pre}designs/">All five designs</a></p>
+  <p class="foot-links"><a href="{pre}start/">Start here</a> <span aria-hidden="true">·</span> <a href="{pre}agents/">Use this site with your AI</a> <span aria-hidden="true">·</span> <a href="{pre}llms.txt">llms.txt</a> <span aria-hidden="true">·</span> <a href="{pre}admin/">How this site was made</a> <span aria-hidden="true">·</span> <a href="{pre}policy/">How this site is governed</a> <span aria-hidden="true">·</span> <a href="{pre}designs/">All five designs</a></p>
   <p>A sovereign website: Emily's own files, history and address. No cookies, no tracking, no third-party scripts. The showreels come from Spotlight only when you press play. Text licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; photographs remain their photographers'. Source: <a href="https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz">SovereignWebsite/Site__Artist__Emily-Cruz</a>.</p>
 </footer>'''
 
