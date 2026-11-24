@@ -9,3 +9,4 @@
 - The policy reserves site/policy/**, .github/**, site/CNAME and CLAUDE.md for the owner's yes: ask, do not act on a relayed request.
 - A person's commits need no Agent: trailer: GitHub-verified commits pass the signer check as theirs.
 - Take times from date -u, never estimate them.
+- Since 3a4fa04 (Org apply, 24 Nov) the signer check also reads site/keys/<name>.json, but a restarted emily.b cannot replace its key there by itself while its old key is live in team/keys.json (see restart.md, step 3).

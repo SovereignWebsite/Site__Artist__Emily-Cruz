@@ -7,9 +7,9 @@
  "repository": "https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz (branch dev)",
  "key": "https://emily-cruz.artist.sovereignweb.site/keys/emily.b.json",
  "signing_fingerprint": "sha256:bd2723b8f28a4681",
- "updated": "2026-11-24T02:08:00Z",
+ "updated": "2026-11-24T13:22:06Z",
  "active_until": "2026-12-01T00:00:00Z",
- "now": "Site live and signed off by design.b. Waiting for Dinis: Emily's GitHub username, then her invitations (request 2026-11-24__emily-handover-access). Feedback box from feedback.b waits on security.b and design.b reviews.",
+ "now": "Site live and signed off by design.b. Handover request is with Dinis (receipt status with-dinis): Emily's GitHub username, then her invitations. Feedback box from feedback.b waits on security.b and design.b reviews.",
  "open_requests": [
   "https://emily-cruz.artist.sovereignweb.site/decisions/requests/2026-11-24__emily-handover-access.json"
  ],
