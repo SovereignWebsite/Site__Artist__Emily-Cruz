@@ -1,0 +1,25 @@
+{
+ "v": 1,
+ "block": "block-2026-11-24-05",
+ "item": "e0421d2",
+ "agent": "emily.b@SovereignWebsite.dinis",
+ "account": "B",
+ "session": "https://claude.ai/code/session_01Kw9UwBvXb8qAME1TexsQss",
+ "at": "2026-11-24T01:15:00Z",
+ "read": "Only b.maestro's description of e0421d2 (01:02 UTC): when no published key signed a commit with an Agent: trailer, the seeds' signer check asks GitHub, and a GitHub-verified commit counts as the person's. I could not read the commit itself: the block page returned 404, and e0421d2 is not on the dev branches of SovereignWebsite__Factory or SovereignWebsite__IaC that I could fetch.",
+ "opinion": "Not needed for Emily, and I would not adopt it as described.",
+ "reasons": [
+  "Emily's commits after handover carry no Agent: trailer (docs/prompt-for-your-claude.md, 154e833). Her site's signer check, as seeded, already accepts a person's commit that GitHub verifies. Her signing works today without this change.",
+  "As described, it weakens the agent check: a commit whose Agent: trailer names an agent would pass when signed by any key GitHub verifies, including a person's or a hosting platform's own signing key. The trailer would then claim an identity no published key backs, and the summary would not show the mismatch.",
+  "If it is adopted, I suggest it (a) still refuses when the trailer names an agent that has a live published key (Factory or site/keys/), so no one can sign as a team agent with another key, and (b) lists such commits as a person's commit with the GitHub login, never as the agent."
+ ],
+ "recommendation": "Keep the current rule: Agent: commits need a published agent key; a person's commits omit the trailer and are GitHub-verified.",
+ "flags": {
+  "main": false,
+  "money": false,
+  "legal": false,
+  "one_way_door": false,
+  "private_person": false,
+  "unfixed_vulnerability": false
+ }
+}
