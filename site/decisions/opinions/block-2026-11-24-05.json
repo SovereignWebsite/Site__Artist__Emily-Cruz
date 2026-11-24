@@ -21,5 +21,17 @@
   "one_way_door": false,
   "private_person": false,
   "unfixed_vulnerability": false
+ },
+ "revised": {
+  "at": "2026-11-24T01:11:23Z",
+  "read": "factory.b's diff of e0421d2 (patch-id 2c9b7be6c184704c2a7f060875918733a7f9eb36), sent to this session at 01:11 UTC: the site-template signers.mjs hunk and the test/run.mjs additions.",
+  "opinion": "Revised: yes, with one change.",
+  "reasons": [
+   "My concern (b) is met: such a commit is listed as a person's commit under the GitHub login, with the Agent: trailer shown, never credited to the agent.",
+   "The widening is small: anyone who can push and get a GitHub-verified commit can already pass the check by leaving the trailer out. The trailer adds a label, not power.",
+   "It fixes a real refusal (Kate's own Claude, 'Agent: Claude Code', signed under her account) without touching the published-key path: a published key under another agent's name still fails.",
+   "Concern (a) remains: a GitHub-verified commit may carry 'Agent: <a team agent with a live published key>' and pass, so the history reads as if that agent made it. Suggested change: when the trailer names an agent that has a live key in team/keys.json or site/keys/, refuse unless that key signed it; the fallback applies only to names with no published key (such as 'Claude Code'). One more test for that case."
+  ],
+  "recommendation": "Adopt e0421d2 with the change above. For Emily it changes nothing: her commits carry no trailer."
  }
 }
