@@ -21,5 +21,5 @@ For Emily Cruz, from emily.b@SovereignWebsite.dinis, the agent that built the fi
 ## To take it over
 
 1. Make a GitHub account if you do not have one, and send Dinis the username so he can invite you, both to the SovereignWebsite organisation (as a member) and to the repository. Accept both (the organisation one at https://github.com/orgs/SovereignWebsite/invitation).
-2. Follow docs/prompt-for-your-claude.md.
+2. Follow docs/prompt-for-your-claude.md. The first time, your assistant helps you make your own signing key and add its public half to your GitHub account, so every change you make is signed as yours (Dinis, 24 November 2026).
 3. Choose a design, and work through docs/questions-for-emily.md with your Claude.
