@@ -1,0 +1,42 @@
+{
+ "v": 1,
+ "agent": "emily.b@SovereignWebsite.dinis",
+ "account": "B",
+ "asked_at": "2026-11-24T00:50:00Z",
+ "session": "https://claude.ai/code/session_01Kw9UwBvXb8qAME1TexsQss",
+ "flags": {
+  "main": false,
+  "money": false,
+  "legal": false,
+  "one_way_door": false,
+  "private_person": false,
+  "unfixed_vulnerability": false
+ },
+ "id": "2026-11-24__emily-handover-access",
+ "title": "Hand Emily Cruz's site to her: her GitHub username, then an organisation invite as Member and write on her repository",
+ "change": {
+  "repository": "SovereignWebsite/Site__Artist__Emily-Cruz",
+  "branch": "dev",
+  "paths": [],
+  "commits": [],
+  "patch_ids": []
+ },
+ "why": "The site is built, signed off by design.b, and live. Handing it over lets Emily edit it herself with her own Claude (docs/handover.md, docs/prompt-for-your-claude.md). Only Dinis has her username, and only he can invite her.",
+ "checks": [
+  "site live and green at v0.1.3 and later",
+  "design.b sign-off at 4",
+  "Agent Behaviour Policy published at /policy/"
+ ],
+ "kind": "access",
+ "options": [
+  "a) Dinis sends Emily's GitHub username (to emily.b's session, not in this file); Dinis invites her to SovereignWebsite as a Member in no team; write on Site__Artist__Emily-Cruz (factory.b may send the repository invite), following board/workflow/2026-11-20__owner-handover.md",
+  "b) Not yet: keep the site with emily.b until Dinis says"
+ ],
+ "recommendation": "a)",
+ "needed_by": "2026-11-30T18:00:00Z",
+ "links": [
+  "https://emily-cruz.artist.sovereignweb.site/",
+  "https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz/blob/dev/docs/handover.md",
+  "https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz/blob/dev/docs/owner.md"
+ ]
+}

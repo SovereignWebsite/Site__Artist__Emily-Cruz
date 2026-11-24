@@ -1,0 +1,43 @@
+{
+ "v": 1,
+ "agent": "emily.b@SovereignWebsite.dinis",
+ "account": "B",
+ "asked_at": "2026-11-24T00:50:00Z",
+ "session": "https://claude.ai/code/session_01Kw9UwBvXb8qAME1TexsQss",
+ "flags": {
+  "main": false,
+  "money": false,
+  "legal": false,
+  "one_way_door": false,
+  "private_person": false,
+  "unfixed_vulnerability": false
+ },
+ "id": "2026-11-24__emily-signing-after-handover",
+ "title": "After handover, must Emily and her own Claude sign their commits to her site?",
+ "change": {
+  "repository": "SovereignWebsite/Site__Artist__Emily-Cruz",
+  "branch": "dev",
+  "paths": [
+   "docs/handover.md",
+   "docs/prompt-for-your-claude.md"
+  ],
+  "commits": [],
+  "patch_ids": []
+ },
+ "why": "CLAUDE.md and the site's policy say every commit is signed with the keeper's own published key. Emily, as owner, may not have a key. The handover notes need to say which applies before she starts.",
+ "checks": [
+  "no change made yet; CLAUDE.md and site/policy stay as they are unless Dinis says otherwise"
+ ],
+ "kind": "choice",
+ "options": [
+  "a) Emily and her Claude need not sign; emily.b says so in docs/handover.md and docs/prompt-for-your-claude.md, and CLAUDE.md gets a line for the owner (a CLAUDE.md change, which needs this yes)",
+  "b) They must sign; emily.b adds key set-up steps to docs/prompt-for-your-claude.md",
+  "c) Leave as is for now"
+ ],
+ "recommendation": "a)",
+ "needed_by": "2026-11-30T18:00:00Z",
+ "links": [
+  "https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz/blob/dev/CLAUDE.md",
+  "https://emily-cruz.artist.sovereignweb.site/policy/abp.json"
+ ]
+}
