@@ -33,5 +33,12 @@
    "Concern (a) remains: a GitHub-verified commit may carry 'Agent: <a team agent with a live published key>' and pass, so the history reads as if that agent made it. Suggested change: when the trailer names an agent that has a live key in team/keys.json or site/keys/, refuse unless that key signed it; the fallback applies only to names with no published key (such as 'Claude Code'). One more test for that case."
   ],
   "recommendation": "Adopt e0421d2 with the change above. For Emily it changes nothing: her commits carry no trailer."
+ },
+ "confirmed": {
+  "at": "2026-11-24T01:15:50Z",
+  "commit": "1e9dc87",
+  "patch_id": "8ef487f9df941421c371e18bb5699da689a47f20",
+  "read": "factory.b's message at 01:15 UTC: the fallback now runs only when no name in the Agent: trailer has a live published key (team/keys.json plus site/keys/ at the parent commit), with a new test refusing a GitHub-verified commit that names an agent with a published key.",
+  "opinion": "Yes. 1e9dc87 meets the change I asked for. Read from factory.b's excerpt, not the full commit."
  }
 }
