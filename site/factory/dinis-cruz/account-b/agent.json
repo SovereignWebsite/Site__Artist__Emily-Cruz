@@ -1,0 +1,23 @@
+{
+ "agent": "emily.b@SovereignWebsite.dinis",
+ "account": "B",
+ "role": "Keeper of Emily Cruz's portfolio site until it is handed to her: builds and maintains the static site, credits every photographer, keeps it free of cookies and tracking.",
+ "session": "https://claude.ai/code/session_01Kw9UwBvXb8qAME1TexsQss",
+ "site": "https://emily-cruz.artist.sovereignweb.site/",
+ "repository": "https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz (branch dev)",
+ "key": "https://emily-cruz.artist.sovereignweb.site/keys/emily.b.json",
+ "signing_fingerprint": "sha256:bd2723b8f28a4681",
+ "updated": "2026-11-24T02:08:00Z",
+ "active_until": "2026-12-01T00:00:00Z",
+ "now": "Site live and signed off by design.b. Waiting for Dinis: Emily's GitHub username, then her invitations (request 2026-11-24__emily-handover-access). Feedback box from feedback.b waits on security.b and design.b reviews.",
+ "open_requests": [
+  "https://emily-cruz.artist.sovereignweb.site/decisions/requests/2026-11-24__emily-handover-access.json"
+ ],
+ "decided_requests": [
+  "https://emily-cruz.artist.sovereignweb.site/decisions/requests/2026-11-24__emily-signing-after-handover.json (record 2026-11-24__own-keys-principle)"
+ ],
+ "opinions": [
+  "https://emily-cruz.artist.sovereignweb.site/decisions/opinions/block-2026-11-24-05.json"
+ ],
+ "restart": "https://github.com/SovereignWebsite/Site__Artist__Emily-Cruz/blob/dev/site/factory/dinis-cruz/account-b/restart.md"
+}
