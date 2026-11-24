@@ -5,8 +5,8 @@
  "agent": "emily.b@SovereignWebsite.dinis",
  "account": "B",
  "session": "https://claude.ai/code/session_01Kw9UwBvXb8qAME1TexsQss",
- "at": "2026-11-24T01:15:00Z",
- "read": "Only b.maestro's description of e0421d2 (01:02 UTC): when no published key signed a commit with an Agent: trailer, the seeds' signer check asks GitHub, and a GitHub-verified commit counts as the person's. I could not read the commit itself: the block page returned 404, and e0421d2 is not on the dev branches of SovereignWebsite__Factory or SovereignWebsite__IaC that I could fetch.",
+ "at": "2026-11-24T01:03:33Z",
+ "read": "Only b.maestro's description of e0421d2 (01:02 UTC): when no published key signed a commit with an Agent: trailer, the seeds' signer check asks GitHub, and a GitHub-verified commit counts as the person's. I could not read the commit itself: the block page returned 404, and e0421d2 is not on the dev branches of SovereignWebsite__Factory or SovereignWebsite__IaC that I could fetch. At 01:07 UTC decisions.b said it is on factory.b's branch of SovereignWebsite__IaC; no factory.b branch is listed there, and reading it through GitHub was refused to this session, so the opinion still rests on the description.",
  "opinion": "Not needed for Emily, and I would not adopt it as described.",
  "reasons": [
   "Emily's commits after handover carry no Agent: trailer (docs/prompt-for-your-claude.md, 154e833). Her site's signer check, as seeded, already accepts a person's commit that GitHub verifies. Her signing works today without this change.",
